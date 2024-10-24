@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:36:30 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/24 16:33:05 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/24 19:03:23 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t ft_strlcat(char * dst, const char * src, size_t dstsize)
 
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
 // int main()
 // {
