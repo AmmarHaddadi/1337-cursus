@@ -6,15 +6,18 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:12:55 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/24 10:14:03 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:27:54 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-if (c >= 'a' && c <= 'z')
-	return (1);
-else if (c >= 'A' && c <= 'Z')
-	return (1);
-else if (d >= 0 && d <= 9)
-	return (1);
-else
-	return (0);
+int ft_isalnum(int c);
+{
+	if (c >= 'a' && c <= 'z')
+		return (1);
+	else if (c >= 'A' && c <= 'Z')
+		return (1);
+	else if (d >= 0 && d <= 9)
+		return (1);
+	else
+		return (0);
+}

@@ -6,13 +6,13 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:51:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/24 12:05:56 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:28:21 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char *strchr(const char *s, int c)
+char *ft_strchr(const char *s, int c)
 {
 	int i;
 

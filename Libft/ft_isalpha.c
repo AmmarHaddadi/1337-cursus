@@ -6,12 +6,12 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:34:37 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/23 20:14:57 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:27:50 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
-int	isalpha(int c)
+int	ft_isalpha(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return 1;

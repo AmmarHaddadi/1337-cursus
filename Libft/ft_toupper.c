@@ -6,11 +6,11 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 20:19:03 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/23 20:23:18 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:28:25 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int toupper(int c)
+int ft_toupper(int c)
 {
 	if (c >= 'a' && c <= 'z')
 		return (c - 32);

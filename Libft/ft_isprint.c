@@ -6,11 +6,11 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:34:28 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/24 10:37:48 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/24 13:28:01 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int isprint(int c)
+int ft_isprint(int c)
 {
 	if (c >= 32 && c <= 126)
 		return (1);
