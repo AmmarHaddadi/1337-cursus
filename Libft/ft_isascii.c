@@ -6,11 +6,11 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:24:17 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/24 13:27:43 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/29 17:16:59 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c);
+int ft_isascii(int c)
 {
 	if (c >= 0 && c <= 127)
 		return (1);
