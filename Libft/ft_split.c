@@ -6,14 +6,14 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:59:02 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/27 10:39:56 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:28:19 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
 
-int count_chunks(char *s, char del)
+static int count_chunks(char *s, char del)
 {
 	int	count;
 	int	in_chunk;
@@ -34,7 +34,7 @@ int count_chunks(char *s, char del)
 	return (count);
 }
 
-char	*create_chunk(char *str, char del)
+static char	*create_chunk(char *str, char del)
 {
 	int		len;
 	char	*chunk;

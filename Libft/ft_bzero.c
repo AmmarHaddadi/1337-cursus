@@ -6,15 +6,18 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 19:27:40 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/25 17:15:05 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/29 18:48:09 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stddef.h>
 
 void ft_bzero(void *s, size_t n)
 {
 	if (n != 0)
 	{
+		char *c = (char *)s;
 		while (n-- > 0)
-			*s++ = 0;
+			*c++ = 0;
 	}
 }

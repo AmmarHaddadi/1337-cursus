@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 08:26:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/27 10:34:53 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/31 12:30:29 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdlib.h>
 #include "libft.h"
 
-int inset(const char c, char const *set)
+static int inset(const char c, char const *set)
 {
 	while(*set)
 		if (*set++ == c) return 1;
