@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:12:55 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/29 17:20:09 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:57:06 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int ft_isalnum(int c)
 		return (1);
 	else if (c >= 'A' && c <= 'Z')
 		return (1);
-	else if (c >= 0 && c <= 9)
+	else if (c >= '0' && c <= '9')
 		return (1);
 	else
 		return (0);
