@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:51:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/29 17:26:48 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/02 12:54:28 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,20 @@
 
 char *ft_strrchr(const char *s, int c)
 {
-	int i;
-
-	i = 0;
+	char ch = (char)c;
+	int i = 0;
 	while (*s)
 	{
 		s++;
 		i++;
 	}
-	if (c == 0)
-		return (char *) (++s);
-	while (i >= 0)
+	if (ch == 0)
+		return (char *)(s);
+	while (i-- >= 0)
 	{
-		if (*s == c)
-			return (char *) s;
+		if (*s == ch)
+			return (char *)s;
 		s--;
-		i--;
 	}
 
 	return NULL;
@@ -40,4 +38,89 @@ char *ft_strrchr(const char *s, int c)
 // int main()
 // {
 // 	printf("%s", strchr("a11a22a33", 'a'));
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+// #include <assert.h>
+
+// // Test function prototypes
+// void test_ft_strrchr_found();
+// void test_ft_strrchr_not_found();
+// void test_ft_strrchr_null_char();
+// void test_ft_strrchr_empty_string();
+// void test_ft_strrchr_multiple_occurrences();
+
+// int main()
+// {
+// 	test_ft_strrchr_found();
+// 	test_ft_strrchr_not_found();
+// 	test_ft_strrchr_null_char();
+// 	test_ft_strrchr_empty_string();
+// 	test_ft_strrchr_multiple_occurrences();
+
+// 	printf("All tests passed!\n");
+// 	return 0;
+// }
+
+// void test_ft_strrchr_found()
+// {
+// 	const char *str = "Hello, World!";
+// 	char c = 'o';
+
+// 	char *result1 = strrchr(str, c);
+// 	char *result2 = ft_strrchr(str, c);
+// 	// printf("result1: %s\n", result1);
+// 	// printf("result2: %s\n", result2);
+
+// 	assert(result1 == result2);
+// 	printf("test_ft_strrchr_found passed\n");
+// }
+
+// void test_ft_strrchr_not_found()
+// {
+// 	const char *str = "Hello, World!";
+// 	char c = 'x';
+
+// 	char *result1 = strrchr(str, c);
+// 	char *result2 = ft_strrchr(str, c);
+
+// 	assert(result1 == result2);
+// 	printf("test_ft_strrchr_not_found passed\n");
+// }
+
+// void test_ft_strrchr_null_char()
+// {
+// 	const char *str = "Hello, World!";
+// 	char c = '\0';
+
+// 	char *result1 = strrchr(str, c);
+// 	char *result2 = ft_strrchr(str, c);
+
+// 	assert(result1 == result2);
+// 	printf("test_ft_strrchr_null_char passed\n");
+// }
+
+// void test_ft_strrchr_empty_string()
+// {
+// 	const char *str = "";
+// 	char c = 'H';
+
+// 	char *result1 = strrchr(str, c);
+// 	char *result2 = ft_strrchr(str, c);
+
+// 	assert(result1 == result2);
+// 	printf("test_ft_strrchr_empty_string passed\n");
+// }
+
+// void test_ft_strrchr_multiple_occurrences()
+// {
+// 	const char *str = "a11a22a33";
+// 	char c = 'a';
+
+// 	char *result1 = strrchr(str, c);
+// 	char *result2 = ft_strrchr(str, c);
+
+// 	assert(result1 == result2);
+// 	printf("test_ft_strrchr_multiple_occurrences passed\n");
 // }
