@@ -6,76 +6,70 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:59:02 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/31 12:28:19 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/03 13:32:23 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 #include <stdlib.h>
+#include "libft.h"
 
 static int count_chunks(char *s, char del)
 {
-	int	count;
-	int	in_chunk;
+	int count;
+	int in_chunk;
 
 	count = 0;
 	in_chunk = 0;
 	while (*s)
 	{
 		if (*s == del)
-            in_chunk = 0;
-        else if (!in_chunk)
-        {
-            in_chunk = 1;
-            count++;
-        }
+			in_chunk = 0;
+		else if (!in_chunk)
+		{
+			in_chunk = 1;
+			count++;
+		}
 		s++;
 	}
 	return (count);
 }
 
-static char	*create_chunk(char *str, char del)
+static char *create_chunk(char *str, char del)
 {
-	int		len;
-	char	*chunk;
-	int		i;
+	int len;
+	char *chunk;
 
 	len = 0;
 	while (str[len] && (str[len] != del))
 		len++;
-	chunk = malloc(sizeof(char) * (len + 1));
-	if (!chunk) return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		chunk[i] = str[i];
-		i++;
-	}
-	chunk[len] = '\0';
+	chunk = ft_substr(str, 0, len);
 	return (chunk);
 }
 
 char **ft_split(char const *s, char c)
 {
-	int		chunk_count;
-	char	**chunks;
-	int		i;
+	int chunk_count;
+	char **chunks;
+	int i;
 
-	if (!s || !c) return NULL;
+	if (!s)
+		return NULL;
 	chunk_count = count_chunks((char *)s, c);
 	chunks = malloc(sizeof(char *) * (chunk_count + 1));
-	if (!chunks) return (NULL);
+	if (!chunks)
+		return (NULL);
 	i = 0;
 	while (*s)
 	{
 		while (*s == c)
-            s++;
-        if (*s)
-        {
-            chunks[i++] = create_chunk((char *)s, c);
-            while (*s && *s != c)
-                s++;
-        }
+			s++;
+		if (*s)
+		{
+			chunks[i++] = create_chunk((char *)s, c);
+			while (*s && *s != c)
+				s++;
+		}
 	}
 	chunks[i] = 0;
 	return (chunks);
@@ -204,4 +198,3 @@ char **ft_split(char const *s, char c)
 // 	test_split_single_char();
 // 	return 0;
 // }
-
