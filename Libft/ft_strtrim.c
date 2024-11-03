@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 08:26:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/31 12:30:29 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:27:46 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,39 @@
 
 static int inset(const char c, char const *set)
 {
-	while(*set)
-		if (*set++ == c) return 1;
+	while (*set)
+		if (*set++ == c)
+			return 1;
 	return 0;
 }
 
 char *ft_strtrim(char const *s1, char const *set)
 {
-	if (!s1 || !set) return NULL;
-
-	int i = 0;
-	int remove_count = 0;
-	while(inset(s1[i++], set))
-		remove_count++;
-	char const *start = &s1[--i];
-	i = ft_strlen(s1) - 1;
-	while(inset(s1[i--], set))
-		remove_count++;
-	char const *end = &s1[++i];
-	char *trimmed = malloc(sizeof(char) * (ft_strlen(s1) - remove_count + 1));
-	i = 0;
-	ft_memmove(trimmed, start, end - start + 1);
+	if (!s1)
+		return NULL;
+	else if (!set || ft_strlen(s1) == 0)
+		return ft_strdup(s1);
+	char const *start = s1;
+	while (*start && inset(*start, set))
+		start++;
+	char const *end = &s1[ft_strlen(s1) - 1];
+	while (end > start && inset(*end, set))
+		end--;
+	size_t t_len = end - start + 1;
+	char *trimmed = malloc(sizeof(char) * (t_len + 1));
+	if (!trimmed)
+		return NULL;
+	size_t i = -1;
+	while(++i < t_len)
+		trimmed[i] = start[i];
+	trimmed[t_len] = 0;
 	return trimmed;
 }
-
-// // FILEPATH: /Users/ahaddadi/1337-cursus/Libft/test_ft_strtrim.c
 
 // #include <stdio.h>
 // #include <string.h>
 // #include <stdlib.h>
+// #include <assert.h>
 
 // char *ft_strtrim(const char *s1, const char *set);
 
@@ -53,8 +57,7 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = "   hello world   ";
 // 	const char *set = " ";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 1: \"%s\"\n", trimmed);
-// 	// Expected output: "hello world"
+// 	assert(strcmp(trimmed, "hello world") == 0);
 // 	free(trimmed);
 // }
 
@@ -63,8 +66,7 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = "\t\t\tgoodbye world\t\t\t";
 // 	const char *set = "\t";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 2: \"%s\"\n", trimmed);
-// 	// Expected output: "goodbye world"
+// 	assert(strcmp(trimmed, "goodbye world") == 0);
 // 	free(trimmed);
 // }
 
@@ -73,8 +75,7 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = "\n\n\nwelcome to the jungle\n\n\n";
 // 	const char *set = "\n";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 3: \"%s\"\n", trimmed);
-// 	// Expected output: "welcome to the jungle"
+// 	assert(strcmp(trimmed, "welcome to the jungle") == 0);
 // 	free(trimmed);
 // }
 
@@ -83,8 +84,7 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = " \t\n  hello world \t\n  ";
 // 	const char *set = " \t\n";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 4: \"%s\"\n", trimmed);
-// 	// Expected output: "hello world"
+// 	assert(strcmp(trimmed, "hello world") == 0);
 // 	free(trimmed);
 // }
 
@@ -93,8 +93,7 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = "";
 // 	const char *set = " \t\n";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 5: \"%s\"\n", trimmed);
-// 	// Expected output: ""
+// 	assert(strcmp(trimmed, "") == 0);
 // 	free(trimmed);
 // }
 
@@ -103,8 +102,7 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = "hello world";
 // 	const char *set = " \t\n";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 6: \"%s\"\n", trimmed);
-// 	// Expected output: "hello world"
+// 	assert(strcmp(trimmed, "hello world") == 0);
 // 	free(trimmed);
 // }
 
@@ -113,9 +111,32 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	const char *s1 = " \t\n ";
 // 	const char *set = " \t\n";
 // 	char *trimmed = ft_strtrim(s1, set);
-// 	printf("Trimmed string 7: \"%s\"\n", trimmed);
-// 	// Expected output: ""
+// 	assert(strcmp(trimmed, "") == 0);
 // 	free(trimmed);
+// }
+
+// // Test case 8: NULL input string
+// void test_null_input_string() {
+// 	const char *s1 = NULL;
+// 	const char *set = " \t\n";
+// 	char *trimmed = ft_strtrim(s1, set);
+// 	assert(trimmed == NULL);
+// }
+
+// // Test case 9: NULL set string
+// // void test_null_set_string() {
+// // 	const char *s1 = "hello world";
+// // 	const char *set = NULL;
+// // 	char *trimmed = ft_strtrim(s1, set);
+// // 	assert(trimmed == NULL);
+// // }
+
+// // Test case 10: Both NULL strings
+// void test_both_null_strings() {
+// 	const char *s1 = NULL;
+// 	const char *set = NULL;
+// 	char *trimmed = ft_strtrim(s1, set);
+// 	assert(trimmed == NULL);
 // }
 
 // int main() {
@@ -126,8 +147,63 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	test_trim_empty();
 // 	test_no_trim();
 // 	test_all_trim();
+// 	test_null_input_string();
+// 	// test_null_set_string();
+// 	test_both_null_strings();
+// 	printf("all passed");
 // 	return 0;
 // }
 
 
+///////////       unit 2
+// #include <assert.h>
+// #include <string.h>
+// #include <stdio.h>
 
+// void test_ft_strtrim() {
+//     // Case 1: Basic trimming
+//     char *result = ft_strtrim("  hello  ", " ");
+//     assert(strcmp(result, "hello") == 0);
+//     free(result);
+
+//     // Case 2: Trimming with multiple characters in set
+//     result = ft_strtrim("--hello--world--", "-");
+//     assert(strcmp(result, "hello--world") == 0);
+//     free(result);
+
+//     // Case 3: Set with multiple different characters
+//     result = ft_strtrim("**##hello##**", "*#");
+//     assert(strcmp(result, "hello") == 0);
+//     free(result);
+
+//     // Case 4: No characters to trim (set is empty)
+//     result = ft_strtrim("  hello  ", "");
+//     assert(strcmp(result, "  hello  ") == 0);
+//     free(result);
+
+//     // Case 5: Set is NULL (should return a copy of s1)
+//     result = ft_strtrim("  hello  ", NULL);
+//     assert(strcmp(result, "  hello  ") == 0);
+//     free(result);
+
+//     // Case 6: s1 is NULL (should return NULL)
+//     result = ft_strtrim(NULL, " ");
+//     assert(result == NULL);
+
+//     // Case 7: s1 is empty
+//     result = ft_strtrim("", " ");
+//     assert(strcmp(result, "") == 0);
+//     free(result);
+
+//     // Case 8: Entire string is in set (should return an empty string)
+//     result = ft_strtrim("####", "#");
+//     assert(strcmp(result, "") == 0);
+//     free(result);
+
+//     printf("All test cases passed!\n");
+// }
+
+// int main() {
+//     test_ft_strtrim();
+//     return 0;
+// }
