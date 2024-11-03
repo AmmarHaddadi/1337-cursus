@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:18:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 11:18:52 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/03 12:09:10 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 // d < s -> d comes before s
 void *ft_memmove(void *dst, const void *src, size_t len)
 {
-	// if (!dst || !src)
-	// 	return NULL;
 	unsigned char *d = (unsigned char *) dst;
 	const unsigned char *s = (const unsigned char *) src;
 
