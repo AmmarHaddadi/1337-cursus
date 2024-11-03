@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:18:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/03 12:09:10 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/03 14:50:11 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 // d < s -> d comes before s
 void *ft_memmove(void *dst, const void *src, size_t len)
 {
+	if (!dst && !src)
+		return NULL;
 	unsigned char *d = (unsigned char *) dst;
 	const unsigned char *s = (const unsigned char *) src;
 
@@ -131,3 +133,32 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 // 	assert(result1 == result2);
 // }
 
+// fixing: [crash]: your memmove does not well with NULL as both parameters and size
+// #include <stdio.h>
+// #include <string.h>
+// #include <assert.h>
+
+// void test_memmove_zero_size() {
+// 	// char src1[] = "123456789";
+// 	// char dst1[10];
+// 	// char src2[] = "123456789";
+// 	// char dst2[10];
+
+// 	// Using ft_memmove
+// 	// ft_memmove(dst1, src1, 0);
+// 	// printf("dst1: %s\n", dst1); // Print dst1
+
+// 	// Using standard memmove
+// 	memmove(((void *)0), ((void *)0), 5);
+// 	// printf("original: %s\n", dst2); // Print dst2
+// 	printf("original: %s\n", memmove(((void *)0), ((void *)0), 5));
+
+// 	// Compare the results
+// 	// assert(memcmp(dst1, dst2, 10) == 0);
+// }
+
+// int main() {
+// 	test_memmove_zero_size();
+// 	printf("All tests passed.\n");
+// 	return 0;
+// }
