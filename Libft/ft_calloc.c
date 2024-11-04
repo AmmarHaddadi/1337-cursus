@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:39:40 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/04 13:09:46 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:37:20 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 
 void *ft_calloc(size_t count, size_t size)
 {
-	if(count == 0 || size ==0)
-		return malloc(1);
+if(count == 0 || size == 0)
+		return malloc(0);
 	void *space = malloc(count * size);
 	if (!space)
 		return NULL;
@@ -64,4 +64,13 @@ void *ft_calloc(size_t count, size_t size)
 
 // 	printf("All tests passed.\n");
 // 	return 0;
+// }
+
+// #include <stdlib.h>
+// #include <stdio.h>
+// int main()
+// {
+// 	char *a = malloc(0);
+// 	free(a);
+// 	printf("ok");
 // }
