@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:15:57 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 10:38:36 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/04 13:56:17 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ char *ft_itoa(int n)
 
 // #include <stdio.h>
 // #include <string.h>
+// #include <limits.h>
 
 // void test_ft_itoa(int n, char *expected_result)
 // {
@@ -85,6 +86,8 @@ char *ft_itoa(int n)
 // 	test_ft_itoa(-456, "-456");
 // 	test_ft_itoa(987654321, "987654321");
 // 	test_ft_itoa(-987654321, "-987654321");
+// 	test_ft_itoa(INT_MAX, "2147483647");
+// 	test_ft_itoa(INT_MIN, "-2147483648");
 
 // 	return 0;
 // }
