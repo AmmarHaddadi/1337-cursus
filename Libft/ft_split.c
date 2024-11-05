@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:59:02 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/03 13:32:23 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:13:33 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,28 @@ static int count_chunks(char *s, char del)
 	return (count);
 }
 
-static char *create_chunk(char *str, char del)
+static char *create_chunk(char **str, char del)
 {
-	int len;
 	char *chunk;
-
-	len = 0;
-	while (str[len] && (str[len] != del))
-		len++;
-	chunk = ft_substr(str, 0, len);
+	char *start = *str;
+	while (*start && *start == del)
+		start++;
+	char *end = start;
+	while (*end && *end != del)
+		end++;
+	chunk = ft_substr(start, 0, end - start);
+	*str = end;
 	return (chunk);
+}
+
+static void delall(char **chunks, int i)
+{
+	while (i >= 0)
+	{
+		free(chunks[i]);
+		i--;
+	}
+	free(chunks);
 }
 
 char **ft_split(char const *s, char c)
@@ -60,28 +72,25 @@ char **ft_split(char const *s, char c)
 	if (!chunks)
 		return (NULL);
 	i = 0;
-	while (*s)
+	while (i < chunk_count)
 	{
-		while (*s == c)
-			s++;
-		if (*s)
+		chunks[i] = create_chunk((char **)&s, c);
+		if (!chunks[i])
 		{
-			chunks[i++] = create_chunk((char *)s, c);
-			while (*s && *s != c)
-				s++;
+			delall(chunks, i - 1);
+			return (NULL);
 		}
+		i++;
 	}
-	chunks[i] = 0;
+	chunks[chunk_count] = NULL;
 	return (chunks);
 }
 
-// // FILEPATH: /Users/ahaddadi/1337-cursus/Libft/test_ft_split.c
+// // // FILEPATH: /Users/ahaddadi/1337-cursus/Libft/test_ft_split.c
 
 // #include <stdio.h>
 // #include <stdlib.h>
 // #include <string.h>
-
-// char **ft_split(const char *s, char c);
 
 // // Helper function to print chunks for debugging
 // void print_chunks(char **chunks) {
