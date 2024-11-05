@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:50:17 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/29 16:53:00 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/05 10:56:43 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,12 @@
 
 static void del_all(t_list *head, void (*del)(void *))
 {
-	while(head)
+	t_list *free_me;
+	if (!head)
+		return ;
+	while (head)
 	{
-		t_list *free_me = head;
+		free_me = head;
 		del(head->content);
 		head = head->next;
 		free(free_me);
@@ -27,34 +30,31 @@ static void del_all(t_list *head, void (*del)(void *))
 
 t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	if (!lst || !f || !del)
-		return NULL;
+	t_list *head;
+	t_list *current;
+	t_list *new;
 
-	t_list *new = malloc(sizeof(t_list));
-	if (!new)
-		return NULL;
-	t_list *head = new;
-	while(lst)
+	if (!lst || !f || !del)
+		return (NULL);
+	head = NULL;
+	while (lst)
 	{
+		new = malloc(sizeof(t_list));
+		if (!new)
+		{
+			del_all(head, del);
+			return (NULL);
+		}
 		new->content = f(lst->content);
-		if (lst->next)
-		{
-			new->next = malloc(sizeof(t_list));
-			if (!new->next)
-			{
-				del_all(head, del);
-				return NULL;
-			}
-			new = new->next;
-			lst = lst->next;
-		}
+		new->next = NULL;
+		if (!head)
+			head = new;
 		else
-		{
-			new->next = NULL;
-			break;
-		}
+			current->next = new;
+		current = new;
+		lst = lst->next;
 	}
-	return head;
+	return (head);
 }
 
 // #include <stdio.h>
