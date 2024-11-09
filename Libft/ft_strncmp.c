@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:13:52 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/08 13:20:40 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:45:29 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	// ft_strncmp(NULL, "NULL", 3);
 	// strncmp(NULL, "NULL", 3);
 // }
-
 
 // #include <stdio.h>
 // #include <string.h>
