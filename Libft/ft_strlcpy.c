@@ -6,17 +6,17 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:26:27 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/31 21:21:07 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:14:44 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlcpy(char * dst, const char * src, size_t dstsize)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	size_t i;
+	size_t	i;
 
-	if (dstsize != 0)
+	if (dstsize > 0)
 	{
 		i = 0;
 		while (i < dstsize - 1 && src[i])
@@ -26,8 +26,25 @@ size_t ft_strlcpy(char * dst, const char * src, size_t dstsize)
 		}
 		dst[i] = 0;
 	}
-	return ft_strlen(src);
+	return (ft_strlen(src));
 }
+
+// #include <stdio.h>
+// #include <string.h>
+// #include <stddef.h>
+// int main()
+// {
+	// char src[] = "Hello, World!";
+	// char dst[50];
+	// int x = strlcpy(NULL, src, 4);
+	// printf("normal: %d\n", x);
+	// printf("normal: %s\n", dst);
+
+	// char dst2[50];
+	// int y = ft_strlcpy(NULL, src, 4);
+	// printf("ft: %d\n", y);
+	// printf("ft: %s\n", dst2);
+// }
 
 // #include <stdio.h>
 // #include <string.h>
@@ -78,5 +95,5 @@ size_t ft_strlcpy(char * dst, const char * src, size_t dstsize)
 
 // int main() {
 // 	test_ft_strlcpy();
-// 	return 0;
+// 	return (0);
 // }

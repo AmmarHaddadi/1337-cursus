@@ -1,33 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:28:07 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/29 11:15:45 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 14:12:26 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stddef.h>
+#include <stdlib.h>
 
-void ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
-	if (!lst || !*lst || !del)
-		return;
-	t_list *current = *lst;
-	while (current)
+	t_list	*next_lst;
+
+	if (!*lst || !del)
+		return ;
+	while (*lst)
 	{
-		t_list *next_lst = current->next;
-		del(current->content);
-		free(current);
-		current = next_lst;
+		next_lst = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = next_lst;
 	}
 	*lst = NULL;
 }
+
+// #include <stdio.h>
+
+// void del(void *content)
+// {
+// 	free(content);
+// }
+
+// void *d = del;
+
+// int main()
+// {
+// 	t_list *lst = malloc(sizeof(t_list));
+// 	lst->content = ft_strdup("Hello");
+// 	lst->next = malloc(sizeof(t_list));
+// 	lst->next->content = ft_strdup("World");
+// 	ft_lstclear(&lst, d);
+// 	if (lst == NULL)
+// 		printf("test passed\n");
+// 	else
+// 		printf("test failed\n");
+// 	return (0);
+// }
 
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -38,10 +61,10 @@ void ft_lstclear(t_list **lst, void (*del)(void*))
 // {
 // 	t_list *node = malloc(sizeof(t_list));
 // 	if (!node)
-// 		return NULL;
+// 		return (NULL);
 // 	node->content = content;
 // 	node->next = NULL;
-// 	return node;
+// 	return (node);
 // }
 
 // // Custom delete function for testing
@@ -92,7 +115,5 @@ void ft_lstclear(t_list **lst, void (*del)(void*))
 // 	test_single_node();
 // 	test_multiple_nodes();
 
-// 	return 0;
+// 	return (0);
 // }
-
-

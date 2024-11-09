@@ -6,23 +6,36 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 12:13:52 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 13:35:26 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:20:40 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (s1[i] && s1[i] == s2[i] && i < n)
 		i++;
 	if (i == n)
-		return 0;
-	return ((unsigned char) s1[i] - (unsigned char) s2[i]);
+		return (0);
+	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+	// ft_strncmp("Hello", NULL, 3);
+	// strncmp("Hello", NULL, 3);
+
+	// ft_strncmp(NULL, "NULL", 3);
+	// strncmp(NULL, "NULL", 3);
+// }
+
 
 // #include <stdio.h>
 // #include <string.h>
@@ -137,5 +150,5 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
 
 // int main() {
 // 	test_ft_strncmp();
-// 	return 0;
+// 	return (0);
 // }

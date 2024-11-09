@@ -6,35 +6,49 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 19:48:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/03 10:14:27 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:39:40 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include "libft.h"
 
-char *ft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	size_t s_len = ft_strlen(s);
-	if (!s || !*s || start >= s_len)
-		return ft_strdup("");
-	else if(len == 0)
+	size_t			s_len;
+	char			*sub;
+	unsigned int	i;
+
+	if (!s)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (len == 0 || start >= s_len)
 		return (ft_strdup(""));
 	else if (len + start > s_len)
 		len = s_len - start;
-	char *sub = malloc(sizeof(char) * (len + 1));
+	sub = malloc(sizeof(char) * (len + 1));
 	if (!sub)
-		return NULL;
-	unsigned int i = 0;
-	while(s[start + i] && i < len)
+		return (NULL);
+	i = 0;
+	while (s[start + i] && i < len)
 	{
 		sub[i] = s[start + i];
 		i++;
 	}
 	sub[i] = 0;
-	return sub;
+	return (sub);
 }
+
+// segfault test
+// #include <stdio.h>
+
+// int main()
+// {
+// 	printf("%s",ft_substr(NULL, 3, 3)); //no
+// 	printf("%s",ft_substr("", 3, 3)); //no
+// 	printf("%s",ft_substr("ddw", -3, -2)); //no
+// }
 
 // #include <stdio.h>
 
@@ -63,7 +77,7 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 // 	test_ft_substr_empty_string();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_substr_normal() {
@@ -118,4 +132,3 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
 // 	printf("test_ft_substr_empty_string passed\n");
 // 	free(result);
 // }
-

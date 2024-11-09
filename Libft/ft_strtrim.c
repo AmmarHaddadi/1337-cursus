@@ -6,44 +6,53 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 08:26:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/03 12:27:46 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 11:23:25 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include "libft.h"
 
-static int inset(const char c, char const *set)
+static int	inset(const char c, char const *set)
 {
 	while (*set)
 		if (*set++ == c)
-			return 1;
-	return 0;
+			return (1);
+	return (0);
 }
 
-char *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
+	size_t		start;
+	size_t		end;
+	char		*trimmed;
+
 	if (!s1)
-		return NULL;
+		return (NULL);
 	else if (!set || ft_strlen(s1) == 0)
-		return ft_strdup(s1);
-	char const *start = s1;
-	while (*start && inset(*start, set))
+		return (ft_strdup(s1));
+	start = 0;
+	while (s1[start] && inset(s1[start], set))
 		start++;
-	char const *end = &s1[ft_strlen(s1) - 1];
-	while (end > start && inset(*end, set))
+	end = ft_strlen(s1) - 1;
+	while (end > start && inset(s1[end], set))
 		end--;
-	size_t t_len = end - start + 1;
-	char *trimmed = malloc(sizeof(char) * (t_len + 1));
-	if (!trimmed)
-		return NULL;
-	size_t i = -1;
-	while(++i < t_len)
-		trimmed[i] = start[i];
-	trimmed[t_len] = 0;
-	return trimmed;
+	trimmed = ft_substr(s1, start, end - start + 1);
+	return (trimmed);
 }
+
+// segfault test
+// #include <stdio.h>
+
+// int main()
+// {
+// 	char *s1 = "NULL";
+// 	char *set = NULL;
+// 	char *trimmed = ft_strtrim(s1, set);
+// 	printf("%s\n", trimmed);
+// 	return (0);
+// }
 
 // #include <stdio.h>
 // #include <string.h>
@@ -124,12 +133,12 @@ char *ft_strtrim(char const *s1, char const *set)
 // }
 
 // // Test case 9: NULL set string
-// // void test_null_set_string() {
-// // 	const char *s1 = "hello world";
-// // 	const char *set = NULL;
-// // 	char *trimmed = ft_strtrim(s1, set);
-// // 	assert(trimmed == NULL);
-// // }
+// void test_null_set_string() {
+// 	const char *s1 = "hello world";
+// 	const char *set = NULL;
+// 	char *trimmed = ft_strtrim(s1, set);
+// 	assert(trimmed == NULL);
+// }
 
 // // Test case 10: Both NULL strings
 // void test_both_null_strings() {
@@ -151,11 +160,10 @@ char *ft_strtrim(char const *s1, char const *set)
 // 	// test_null_set_string();
 // 	test_both_null_strings();
 // 	printf("all passed");
-// 	return 0;
+// 	return (0);
 // }
 
-
-///////////       unit 2
+/////////       unit 2
 // #include <assert.h>
 // #include <string.h>
 // #include <stdio.h>
@@ -205,5 +213,5 @@ char *ft_strtrim(char const *s1, char const *set)
 
 // int main() {
 //     test_ft_strtrim();
-//     return 0;
+//     return (0);
 // }

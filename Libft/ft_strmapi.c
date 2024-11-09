@@ -6,26 +6,31 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 13:35:38 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/27 17:57:55 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:02:11 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	if (!s || !f) return NULL;
-	char *mod = malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!mod) return NULL;
-	unsigned int i = 0;
+	char			*mod;
+	unsigned int	i;
+
+	if (!s || !f)
+		return (NULL);
+	mod = malloc(sizeof(char) * (ft_strlen(s) + 1));
+	if (!mod)
+		return (NULL);
+	i = 0;
 	while (s[i])
 	{
 		mod[i] = f(i, (char)s[i]);
 		i++;
 	}
 	mod[i] = 0;
-	return mod;
+	return (mod);
 }
 
 // #include <stdio.h>
@@ -34,16 +39,16 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 // // Sample function to be used with ft_strmapi
 // char sample_function(unsigned int i, char c) {
-// 	return c + i;
+// 	return (c + i);
 // }
 
 // // Function that converts to uppercase
 // char to_uppercase(unsigned int i, char c) {
 // 	(void)i; // Unused parameter
 // 	if (c >= 'a' && c <= 'z') {
-// 		return c - 32;
+// 		return (c - 32);
 // 	}
-// 	return c;
+// 	return (c);
 // }
 
 // // Helper function to print test results
@@ -79,6 +84,5 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 // 	print_test_result("Test 5 - To uppercase", strcmp(result, "ABC") == 0);
 // 	free(result);
 
-// 	return 0;
+// 	return (0);
 // }
-

@@ -6,26 +6,25 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 13:36:30 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 10:48:21 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 17:12:43 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
 #include "libft.h"
+#include <stddef.h>
 
-
-size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t d_len;
-	size_t s_len;
-	size_t i;
+	size_t	d_len;
+	size_t	s_len;
+	size_t	i;
 
 	d_len = ft_strlen(dst);
 	s_len = ft_strlen(src);
 	if (dstsize == 0 || d_len >= dstsize)
 		return (dstsize + s_len);
 	i = 0;
-	while(src[i] && (d_len + i) < dstsize - 1)
+	while (src[i] && (d_len + i) < dstsize - 1)
 	{
 		dst[d_len + i] = src[i];
 		i++;
@@ -33,6 +32,22 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[d_len + i] = '\0';
 	return (d_len + s_len);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+	// if src, dst or both are null, strlcat segfaults
+	// char src[] = ", World!";
+	// char dst[50] = "Hello";
+	// printf("normal: %lu\n", strlcat(NULL, NULL, 4));
+	// printf("normal: %s\n", dst);
+
+	// char dst2[50] = "Hello";
+	// printf("ft: %lu\n", ft_strlcat(NULL, src, 4));
+	// printf("ft: %s\n", dst2);
+// }
 
 // #include <assert.h>
 // #include <string.h>
@@ -53,7 +68,7 @@ size_t ft_strlcat(char *dst, const char *src, size_t dstsize)
 // 	test_ft_strlcat_empty_src();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_strlcat_normal() {

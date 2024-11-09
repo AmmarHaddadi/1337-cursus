@@ -6,28 +6,44 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 17:31:34 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 13:20:47 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:24:53 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
 #include "libft.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-char *ft_strdup(const char *s1)
+char	*ft_strdup(const char *s1)
 {
-	char *dup = malloc(ft_strlen(s1) + 1);
+	char	*dup;
+	size_t	i;
+
+	dup = malloc(ft_strlen(s1) + 1);
 	if (!dup)
-		return NULL;
-	int i = 0;
+		return (NULL);
+	i = 0;
 	while (s1[i])
 	{
 		dup[i] = s1[i];
 		i++;
 	}
 	dup[i] = 0;
-	return dup;
+	return (dup);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+	// strdup(NULL); //segfaults
+	// char *str = strdup(NULL);
+
+	// char *str = ft_strdup("NULL");
+
+	// printf("str: %s\n", str);
+// }
 
 // #include <stdio.h>
 // #include <string.h>
@@ -45,7 +61,7 @@ char *ft_strdup(const char *s1)
 // 	test_ft_strdup_null();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_strdup_normal() {

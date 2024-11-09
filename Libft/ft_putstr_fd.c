@@ -12,11 +12,11 @@
 
 #include <unistd.h>
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
 	if (fd >= 0)
 	{
-		while(*s)
+		while (*s)
 			write(fd, s++, 1);
 	}
 }
@@ -73,5 +73,5 @@ void ft_putstr_fd(char *s, int fd)
 // int main()
 // {
 // 	test_ft_putstr_fd_append();
-// 	return 0;
+// 	return (0);
 // }

@@ -6,18 +6,18 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 15:59:02 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/05 10:13:33 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 11:53:12 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stddef.h>
 #include <stdlib.h>
-#include "libft.h"
 
-static int count_chunks(char *s, char del)
+static int	count_chunks(char *s, char del)
 {
-	int count;
-	int in_chunk;
+	int	count;
+	int	in_chunk;
 
 	count = 0;
 	in_chunk = 0;
@@ -35,13 +35,16 @@ static int count_chunks(char *s, char del)
 	return (count);
 }
 
-static char *create_chunk(char **str, char del)
+static char	*create_chunk(char **str, char del)
 {
-	char *chunk;
-	char *start = *str;
+	char	*chunk;
+	char	*start;
+	char	*end;
+
+	start = *str;
 	while (*start && *start == del)
 		start++;
-	char *end = start;
+	end = start;
 	while (*end && *end != del)
 		end++;
 	chunk = ft_substr(start, 0, end - start);
@@ -49,7 +52,7 @@ static char *create_chunk(char **str, char del)
 	return (chunk);
 }
 
-static void delall(char **chunks, int i)
+static void	delall(char **chunks, int i)
 {
 	while (i >= 0)
 	{
@@ -59,14 +62,14 @@ static void delall(char **chunks, int i)
 	free(chunks);
 }
 
-char **ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	int chunk_count;
-	char **chunks;
-	int i;
+	int		chunk_count;
+	char	**chunks;
+	int		i;
 
 	if (!s)
-		return NULL;
+		return (NULL);
 	chunk_count = count_chunks((char *)s, c);
 	chunks = malloc(sizeof(char *) * (chunk_count + 1));
 	if (!chunks)
@@ -86,7 +89,24 @@ char **ft_split(char const *s, char c)
 	return (chunks);
 }
 
-// // // FILEPATH: /Users/ahaddadi/1337-cursus/Libft/test_ft_split.c
+// segfault test
+// #include <stdio.h>
+// int main()
+// {
+// 	char **chunks = ft_split("", 0);
+// 	if (chunks)
+// 	{
+// 		int i = 0;
+// 		while (chunks[i])
+// 		{
+// 			printf("%s\n", chunks[i]);
+// 			i++;
+// 		}
+// 	}
+// 	else
+// 		printf("Null pointer handled correctly.\n");
+// 	return (0);
+// }
 
 // #include <stdio.h>
 // #include <stdlib.h>
@@ -205,5 +225,5 @@ char **ft_split(char const *s, char c)
 // 	test_split_only_delimiters();
 // 	test_split_null_pointer();
 // 	test_split_single_char();
-// 	return 0;
+// 	return (0);
 // }

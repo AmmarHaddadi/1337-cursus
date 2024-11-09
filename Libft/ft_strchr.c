@@ -6,25 +6,33 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:15:19 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 12:44:26 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:07:36 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char *ft_strchr(const char *s, int c)
+char	*ft_strchr(const char *s, int c)
 {
-	char ch = (char)c;
 	while (*s)
 	{
-		if (*s == ch)
-			return (char *)s;
+		if (*s == (char)c)
+			return ((char *)s);
 		s++;
 	}
-	if (ch == 0)
-		return (char *)(s);
-	return NULL;
+	if ((char)c == 0)
+		return ((char *)(s));
+	return (NULL);
 }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main()
+// {
+// 	strchr(NULL, 0);
+// 	ft_strchr(NULL, 0);
+// }
 
 // #include <stdio.h>
 // #include <string.h>
@@ -43,7 +51,7 @@ char *ft_strchr(const char *s, int c)
 // 	test_ft_strchr_empty_string();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_strchr_found() {

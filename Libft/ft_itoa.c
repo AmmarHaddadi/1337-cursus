@@ -6,40 +6,43 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 11:15:57 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/04 13:56:17 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 11:59:24 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h"
+#include <stdlib.h>
 
-static int tol(int n)
+static int	tol(int n)
 {
-	int tol = 0;
+	int	tol;
+
+	tol = 0;
 	while (n > 0)
 	{
 		n /= 10;
 		tol++;
 	}
-	return tol;
+	return (tol);
 }
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
+	int		is_neg;
+	int		len;
+	char	*str;
+
 	if (n == 0)
-		return ft_strdup("0");
+		return (ft_strdup("0"));
 	else if (n == -2147483648)
-		return ft_strdup("-2147483648");
-	int is_neg = (n < 0);
+		return (ft_strdup("-2147483648"));
+	is_neg = (n < 0);
 	if (is_neg)
 		n = -n;
-
-	int len = tol(n) + is_neg + 1;
-
-	char *str = malloc(len * sizeof(char));
+	len = tol(n) + is_neg + 1;
+	str = malloc(len * sizeof(char));
 	if (!str)
-		return NULL;
-
+		return (NULL);
 	len -= 1;
 	str[len] = '\0';
 	if (is_neg)
@@ -49,17 +52,18 @@ char *ft_itoa(int n)
 		str[--len] = (n % 10) + '0';
 		n /= 10;
 	}
-	return str;
+	return (str);
 }
 
 // #include <stdio.h>
+// #include <stdlib.h>
 // int main(int argc, char **argv)
 // {
 // 	if (argc == 2)
 // 	{
-// 		printf("%d", ft_atoi(argv[1]));
+// 		printf("%s", ft_itoa(atoi(argv[1])));
 // 	}
-// 	return 0;
+// 	return (0);
 // }
 
 // tests
@@ -74,7 +78,8 @@ char *ft_itoa(int n)
 // 	if (strcmp(result, expected_result) == 0)
 // 		printf("PASS: ft_itoa(%d) = %s\n", n, result);
 // 	else
-// 		printf("FAIL: ft_itoa(%d) = %s, expected: %s\n", n, result, expected_result);
+// 		printf("FAIL: ft_itoa(%d) = %s, expected: %s\n", n, result,
+			// expected_result);
 // 	free(result);
 // }
 
@@ -89,5 +94,5 @@ char *ft_itoa(int n)
 // 	test_ft_itoa(INT_MAX, "2147483647");
 // 	test_ft_itoa(INT_MIN, "-2147483648");
 
-// 	return 0;
+// 	return (0);
 // }

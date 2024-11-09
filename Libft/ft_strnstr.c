@@ -6,28 +6,26 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 12:30:31 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 14:51:48 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:08:14 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char *ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	const char *n;
-	const char *h;
-	size_t l;
+	const char	*n;
+	const char	*h;
+	size_t		l;
 
 	if (*needle == '\0')
 		return ((char *)haystack);
-
 	while (*haystack && len > 0)
 	{
 		n = needle;
 		h = haystack;
 		l = len;
-
-		while(*h == *n && *n && l-- > 0)
+		while (*h == *n && *n && l-- > 0)
 		{
 			h++;
 			n++;
@@ -37,8 +35,23 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 		haystack++;
 		len--;
 	}
-	return NULL;
+	return (NULL);
 }
+
+// segfault test
+// #include <string.h>
+// #include <stdio.h>
+// int main()
+// {
+	// char *x = strnstr("bbr1bar2bar3", NULL, 10); //SEGFAULT
+	// char *x = strnstr(NULL, "NULL", 10); //SEGFAULT
+	// char *x = strnstr(NULL, NULL, 10); //SEGFAULT
+	// ft
+	// char *x = ft_strnstr("bbr1bar2bar3", NULL, 10); //SEGFAULT
+	// char *x = ft_strnstr(NULL, "NULL", 10); //SEGFAULT
+	// char *x = ft_strnstr(NULL, NULL, 10); //SEGFAULT
+	// printf("%s",x);
+// }
 
 // #include <stdio.h>
 // const char *largestring = "bbr1bar2bar3";
@@ -52,8 +65,6 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 // #include <stdio.h>
 // #include <string.h>
 // #include <assert.h>
-
-
 
 // // Test function prototypes
 // void test_ft_strnstr_found();
@@ -70,7 +81,7 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 // 	test_ft_strnstr_partial_match();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_strnstr_found() {
@@ -132,4 +143,3 @@ char *ft_strnstr(const char *haystack, const char *needle, size_t len)
 // 	assert(result1 == result2);
 // 	printf("test_ft_strnstr_partial_match passed\n");
 // }
-

@@ -6,24 +6,25 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:05:51 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/28 14:15:39 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 13:06:05 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-static void wc(char c, int fd)
+static void	wc(char c, int fd)
 {
 	write(fd, &c, 1);
 }
 
-
-void ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
+	if (fd < 0)
+		return ;
 	if (n == -2147483648)
 	{
 		write(fd, "-2147483648", 12);
-		return;
+		return ;
 	}
 	else if (n >= 0 && n <= 9)
 		wc('0' + n, fd);
@@ -44,7 +45,6 @@ void ft_putnbr_fd(int n, int fd)
 // #include <unistd.h>
 // #include <string.h>
 // #include <stdlib.h>
-
 
 // void test_ft_putnbr_fd(int n, const char *expected)
 // {
@@ -78,7 +78,8 @@ void ft_putnbr_fd(int n, int fd)
 // 	if (strcmp(buffer, expected) == 0) {
 // 		printf("Test passed: %d -> '%s'\n", n, buffer);
 // 	} else {
-// 		printf("Test failed: %d -> Expected '%s', but got '%s'\n", n, expected, buffer);
+// 		printf("Test failed: %d -> Expected '%s', but got '%s'\n", n, expected,
+			// buffer);
 // 	}
 
 // 	// Close and remove the temporary file
@@ -97,7 +98,5 @@ void ft_putnbr_fd(int n, int fd)
 // 	test_ft_putnbr_fd(-2147483648, "-2147483648");
 // 	test_ft_putnbr_fd(2147483647, "2147483647");
 
-// 	return 0;
+// 	return (0);
 // }
-
-

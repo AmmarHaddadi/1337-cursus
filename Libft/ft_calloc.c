@@ -6,24 +6,31 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 16:39:40 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/04 13:37:20 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 19:17:48 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stddef.h>
 #include "libft.h"
+#include <stddef.h>
+#include <stdlib.h>
 
-void *ft_calloc(size_t count, size_t size)
+void	*ft_calloc(size_t count, size_t size)
 {
-if(count == 0 || size == 0)
-		return malloc(0);
-	void *space = malloc(count * size);
+	void	*space;
+
+	space = malloc(count * size);
 	if (!space)
-		return NULL;
+		return (NULL);
 	ft_bzero(space, count * size);
-	return space;
+	return (space);
 }
+
+// NULL tests
+// int main()
+// {
+// 	char *a = ft_calloc(0, 0);
+// 	free(a);
+// }
 
 // #include <stdlib.h>
 // #include <stdio.h>
@@ -63,7 +70,7 @@ if(count == 0 || size == 0)
 // 	test_ft_calloc(100, 1);
 
 // 	printf("All tests passed.\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // #include <stdlib.h>

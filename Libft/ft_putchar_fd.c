@@ -6,13 +6,13 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 20:54:22 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/28 00:50:43 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:37:59 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
 	if (fd >= 0)
 		write(fd, &c, 1);
@@ -27,7 +27,8 @@ void ft_putchar_fd(char c, int fd)
 // void test_ft_putchar_fd()
 // {
 // 	int fd;
-// 	char buffer[2] = {0}; // Buffer to store the output character and null terminator
+// 	char buffer[2] = {0};
+		// Buffer to store the output character and null terminator
 
 // 	// Create a temporary file
 // 	fd = open("tempfile.txt", O_RDWR | O_CREAT | O_TRUNC, 0644);
@@ -52,7 +53,8 @@ void ft_putchar_fd(char c, int fd)
 
 // 	// Check if the character written is 'A'
 // 	if (strcmp(buffer, "A") == 0) {
-// 		printf("Test passed: Character 'A' was correctly written to the file.\n");
+// 		printf("Test passed: Character 'A'
+// 				was correctly written to the file.\n");
 // 	} else {
 // 		printf("Test failed: Expected 'A', but got '%s'.\n", buffer);
 // 	}
@@ -65,5 +67,5 @@ void ft_putchar_fd(char c, int fd)
 // int main()
 // {
 // 	test_ft_putchar_fd();
-// 	return 0;
+// 	return (0);
 // }

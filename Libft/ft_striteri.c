@@ -6,22 +6,23 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/27 18:33:21 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/27 19:07:39 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 12:22:40 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-void ft_striteri(char *s, void (*f)(unsigned int, char *))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	if (s && f)
+	unsigned int	i;
+
+	if (!s || f)
+		return ;
+	i = 0;
+	while (s[i])
 	{
-		unsigned int i = 0;
-		while (s[i])
-		{
-			f(i, &s[i]);
-			i++;
-		}
+		f(i, &s[i]);
+		i++;
 	}
 }
 
@@ -74,11 +75,12 @@ void ft_striteri(char *s, void (*f)(unsigned int, char *))
 
 // 	// Test case 4: Null function pointer
 // 	ft_striteri(str3, NULL);
-// 	print_test_result("Test 4 - Null function pointer", strcmp(str3, "abc") == 0); // Should not modify the string
+// 	print_test_result("Test 4 - Null function pointer", strcmp(str3,
+			// "abc") == 0); // Should not modify the string
 
 // 	// Test case 5: Function that converts to uppercase
 // 	ft_striteri(str4, to_uppercase);
 // 	print_test_result("Test 5 - To uppercase", strcmp(str4, "ABC") == 0);
 
-// 	return 0;
+// 	return (0);
 // }

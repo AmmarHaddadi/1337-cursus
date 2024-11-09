@@ -6,38 +6,43 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:51:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/02 12:54:28 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 13:37:23 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-char *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-	char ch = (char)c;
-	int i = 0;
+	char	ch;
+	int		i;
+
+	ch = (char)c;
+	i = 0;
 	while (*s)
 	{
 		s++;
 		i++;
 	}
 	if (ch == 0)
-		return (char *)(s);
-	while (i-- >= 0)
+		return ((char *)(s));
+	while (i-- > 0)
 	{
 		if (*s == ch)
-			return (char *)s;
+			return ((char *)s);
 		s--;
 	}
-
-	return NULL;
+	return (NULL);
 }
 
 // #include <stdio.h>
+// #include <string.h>
 
 // int main()
 // {
-// 	printf("%s", strchr("a11a22a33", 'a'));
+	// printf("%s", srtrchr("a11a22a33", 'a'));
+	// strrchr(NULL, 'a');
+	// ft_strrchr(NULL, 'a');
 // }
 
 // #include <stdio.h>
@@ -60,7 +65,7 @@ char *ft_strrchr(const char *s, int c)
 // 	test_ft_strrchr_multiple_occurrences();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_strrchr_found()
@@ -70,9 +75,6 @@ char *ft_strrchr(const char *s, int c)
 
 // 	char *result1 = strrchr(str, c);
 // 	char *result2 = ft_strrchr(str, c);
-// 	// printf("result1: %s\n", result1);
-// 	// printf("result2: %s\n", result2);
-
 // 	assert(result1 == result2);
 // 	printf("test_ft_strrchr_found passed\n");
 // }

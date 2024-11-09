@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 12:50:17 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/05 10:56:43 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 15:37:25 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,44 +14,28 @@
 #include <stddef.h>
 #include <stdlib.h>
 
-static void del_all(t_list *head, void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list *free_me;
-	if (!head)
-		return ;
-	while (head)
-	{
-		free_me = head;
-		del(head->content);
-		head = head->next;
-		free(free_me);
-	}
-}
-
-t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	t_list *head;
-	t_list *current;
-	t_list *new;
+	t_list	*head;
+	t_list	*last;
+	t_list	*new;
 
 	if (!lst || !f || !del)
 		return (NULL);
 	head = NULL;
 	while (lst)
 	{
-		new = malloc(sizeof(t_list));
+		new = ft_lstnew(f(lst->content));
 		if (!new)
 		{
-			del_all(head, del);
+			ft_lstclear(&head, del);
 			return (NULL);
 		}
-		new->content = f(lst->content);
-		new->next = NULL;
 		if (!head)
 			head = new;
 		else
-			current->next = new;
-		current = new;
+			last->next = new;
+		last = new;
 		lst = lst->next;
 	}
 	return (head);
@@ -66,10 +50,10 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // {
 // 	t_list *node = malloc(sizeof(t_list));
 // 	if (!node)
-// 		return NULL;
+// 		return (NULL);
 // 	node->content = content;
 // 	node->next = NULL;
-// 	return node;
+// 	return (node);
 // }
 
 // // Helper function to delete a list node
@@ -83,9 +67,9 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // {
 // 	int *new_content = malloc(sizeof(int));
 // 	if (!new_content)
-// 		return NULL;
+// 		return (NULL);
 // 	*new_content = *(int *)content * 2; // Duplicate and multiply by 2
-// 	return new_content;
+// 	return (new_content);
 // }
 
 // // Corrected retadd function
@@ -94,10 +78,10 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // 	int *b = malloc(sizeof(int));
 // 	if (b == NULL)
 // 	{
-// 		return NULL; // Handle memory allocation failure
+// 		return (NULL); // Handle memory allocation failure
 // 	}
 // 	*b = a;
-// 	return b;
+// 	return (b);
 // }
 
 // // Function to clear the list
@@ -135,5 +119,5 @@ t_list *ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 // 	ft_lstclear(&new, delete_node);
 // 	ft_lstclear(&ls1, delete_node);
 
-// 	return 0;
+// 	return (0);
 // }

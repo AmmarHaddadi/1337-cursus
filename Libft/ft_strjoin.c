@@ -6,13 +6,13 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 08:06:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/04 12:44:03 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 10:49:12 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 #include <stddef.h>
+#include <stdlib.h>
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -30,9 +30,12 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (s12);
 }
 
+// segfault testing
+// #include <stdio.h>
+
 // int main()
 // {
-// 	printf("%s\n", ft_strjoin("", ""));
+// 	printf("%s\n", ft_strjoin("NULL", "NULL"));
 // }
 
 // #include <stdio.h>
@@ -65,7 +68,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 // 	test_ft_strjoin_both_null();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
 // void test_ft_strjoin_normal() {

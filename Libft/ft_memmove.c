@@ -6,49 +6,47 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/25 09:18:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/03 14:50:11 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/08 16:33:57 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "libft.h"
 
 // we use s inestead of src bash tb9a 3ndna wa7d copy original for reference
 // d < s -> d comes before s
-void *ft_memmove(void *dst, const void *src, size_t len)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	if (!dst && !src)
-		return NULL;
-	unsigned char *d = (unsigned char *) dst;
-	const unsigned char *s = (const unsigned char *) src;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	if (d < s)
-	{
-		while (len-- > 0)
-			*d++ = *s++;
-	}
+	if (!dst && !src)
+		return (NULL);
+	if (dst <= src)
+		dst = ft_memcpy(dst, src, len);
 	else
 	{
-		d += (len - 1);
-		s += (len - 1);
+		d = (unsigned char *)dst;
+		s = (unsigned char *)src;
 		while (len-- > 0)
-			*d-- = *s--;
+			d[len] = s[len];
 	}
-	return dst;
+	return (dst);
 }
 
 // #include <stdio.h>
-
+// #include <string.h>
 // int main()
 // {
-// 	char s[] = "123456789";
-// 	ft_memmove(s+2, s, sizeof(char) * 7);
-// 	printf("%s", s);
+	// char s[] = "123456789";
+	// ft_memmove(s+2, s, sizeof(char) * 7);
+	// printf("%s", s);
+	// memmove(NULL,NULL, 5);
 // }
 
 // #include <stdio.h>
 // #include <string.h>
 // #include <assert.h>
-
 
 // // Test function prototypes
 // void test_ft_memmove_normal();
@@ -62,13 +60,14 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 // 	test_ft_memmove_overlap_forward();
 // 	test_ft_memmove_overlap_backward();
 // 	test_ft_memmove_empty();
-// 	test_ft_memmove_null();
+// 	// test_ft_memmove_null();
 
 // 	printf("All tests passed!\n");
-// 	return 0;
+// 	return (0);
 // }
 
-// void log_test(const char *test_name, const char *expected, const char *result, size_t len) {
+// void log_test(const char *test_name, const char *expected,
+// 	const char *result, size_t len) {
 // 	printf("Test: %s\n", test_name);
 // 	printf("Expected: %.*s\n", (int)len, expected);
 // 	printf("Result: %.*s\n", (int)len, result);
@@ -124,7 +123,8 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 // 	char *src1 = NULL;
 // 	char *src2 = NULL;
 
-// 	// memmove should handle NULL gracefully, but we won't test it directly as it may cause undefined behavior.
+// 	// memmove should handle NULL gracefully,
+// 		// but we won't test it directly as it may cause undefined behavior.
 // 	// Instead, we ensure ft_memmove also handles NULL gracefully.
 // 	void *result1 = ft_memmove(src1, src2, 0);
 // 	void *result2 = ft_memmove(src1, src2, 0);
@@ -133,7 +133,9 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 // 	assert(result1 == result2);
 // }
 
-// fixing: [crash]: your memmove does not well with NULL as both parameters and size
+// ////// more tests
+// fixing: [crash]: your memmove does not well
+// with NULL as both parameters and size
 // #include <stdio.h>
 // #include <string.h>
 // #include <assert.h>
@@ -160,5 +162,5 @@ void *ft_memmove(void *dst, const void *src, size_t len)
 // int main() {
 // 	test_memmove_zero_size();
 // 	printf("All tests passed.\n");
-// 	return 0;
+// 	return (0);
 // }
