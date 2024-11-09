@@ -6,31 +6,23 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 11:51:12 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/08 13:37:23 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:17:05 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
+#include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	ch;
 	int		i;
 
-	ch = (char)c;
-	i = 0;
-	while (*s)
+	i = ft_strlen(s);
+	while (i >= 0)
 	{
-		s++;
-		i++;
-	}
-	if (ch == 0)
-		return ((char *)(s));
-	while (i-- > 0)
-	{
-		if (*s == ch)
-			return ((char *)s);
-		s--;
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i--;
 	}
 	return (NULL);
 }
@@ -41,7 +33,7 @@ char	*ft_strrchr(const char *s, int c)
 // int main()
 // {
 	// printf("%s", srtrchr("a11a22a33", 'a'));
-	// strrchr(NULL, 'a');
+	// strrchr(NULL, 'a'); // Segmentation fault
 	// ft_strrchr(NULL, 'a');
 // }
 

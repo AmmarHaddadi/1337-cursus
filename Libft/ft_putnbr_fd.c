@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 12:05:51 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/09 13:06:05 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/09 17:23:18 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	wc(char c, int fd)
 void	ft_putnbr_fd(int n, int fd)
 {
 	if (fd < 0)
-		return ;
+		return;
 	if (n == -2147483648)
 	{
-		write(fd, "-2147483648", 12);
+		write(fd, "-2147483648", 11);
 		return ;
 	}
 	else if (n >= 0 && n <= 9)
