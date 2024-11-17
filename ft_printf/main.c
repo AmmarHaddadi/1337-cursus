@@ -10,7 +10,8 @@ int ft_printf(const char *str, ...)
 
 	while (*str)
 	{
-		if (*str == '%' && (*str + 1) != '\0')
+		// if (*str == '%' && (*str + 1) != '\0')
+		if (*str == '%')
 		{
 			str++;
 			int add = fsp(*str, args);
@@ -27,9 +28,3 @@ int ft_printf(const char *str, ...)
 	va_end(args);
 	return (i);
 }
-
-// #include <stdio.h>
-// int main()
-// {
-// 	// printf("%010dhi", 42);
-// }

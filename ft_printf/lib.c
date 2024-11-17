@@ -9,6 +9,8 @@ int tol_unsigned(unsigned long n)
 	int tol;
 
 	tol = 0;
+	if (n == 0)
+		return 1;
 	while (n > 0)
 	{
 		n /= 10;
@@ -33,9 +35,7 @@ int tol_hex(unsigned long n)
 void put_unsigned(unsigned int num)
 {
 	if (num >= 10)
-	{
 		put_unsigned(num / 10);
-	}
 	ft_putchar_fd((num % 10) + '0', 1);
 }
 
