@@ -42,7 +42,7 @@ int fsp(char fs, va_list args)
 	}
 	else if (fs == 'x' || fs == 'X')
 	{
-		return print_16(va_arg(args, long long), fs);
+		return print_16(va_arg(args, unsigned int), fs);
 	}
 	return (0);
 }

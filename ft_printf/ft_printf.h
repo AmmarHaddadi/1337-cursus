@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/17 12:03:10 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/17 13:17:36 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 // 								Printf specific functions
 void				put_unsigned(unsigned int num);
 int					print_address(void *add);
-int					print_16(long long nbr, char upper);
+int					print_16(unsigned int nbr, char upper);
 int					ft_printf(const char *str, ...);
 char				*ft_itoa(int n);
 int					tol_unsigned(unsigned long n);

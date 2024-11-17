@@ -1,9 +1,9 @@
 - [x] %c Prints a single character.
 - [x] %s Prints a string (as defined by the common C convention).
-- [ ] %p The void * pointer argument has to be printed in hexadecimal format.
+- [x] %p The void * pointer argument has to be printed in hexadecimal format.
 - [x] %d Prints a decimal (base 10) number.
 - [x] %i Prints an integer in base 10.
 - [x] %u Prints an unsigned decimal (base 10) number.
-- [ ] %x Prints a number in hexadecimal (base 16) lowercase format.
-- [ ] %X Prints a number in hexadecimal (base 16) uppercase format.
+- [x] %x Prints a number in hexadecimal (base 16) lowercase format.
+- [x] %X Prints a number in hexadecimal (base 16) uppercase format.
 - [x] %% Prints a percent sign.

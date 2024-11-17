@@ -3,6 +3,7 @@
 #include <sys/unistd.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 int tol_unsigned(unsigned long n)
 {
@@ -24,6 +25,8 @@ int tol_hex(unsigned long n)
 	int tol;
 
 	tol = 0;
+	if (n == 0)
+		return 1;
 	while (n)
 	{
 		n /= 16;
@@ -52,7 +55,7 @@ int print_address(void *add)
 	int len = tol_hex(ulptr) + 2;
 
 	if (!(hex = ft_calloc(len + 1, 1)))
-        return 0;
+		return 0;
 	hex[len] = '\0';
 	while (ulptr)
 	{
@@ -67,12 +70,17 @@ int print_address(void *add)
 	return len;
 }
 
-int print_16(long long nbr, char upper)
+int print_16(unsigned int nbr, char upper)
 {
-	char buff[100];
 	char *base = "0123456789abcdef";
 	if (upper == 'X')
 		base = "0123456789ABCDEF";
+
+	char *buff = NULL;
+	int len = tol_hex(nbr);
+	if (!(buff = calloc(tol_hex(nbr) + 1, 1)))
+		return 0;
+	buff[len] = 0;
 	int i = 0;
 	if (nbr == 0)
 	{
@@ -82,19 +90,9 @@ int print_16(long long nbr, char upper)
 	{
 		while (nbr)
 		{
-			buff[i++] = base[nbr % 16];
+			buff[--len] = base[nbr % 16];
 			nbr /= 16;
 		}
-	}
-	buff[i] = '\0';
-	int j = 0;
-	char tmp_j;
-	while (j < i / 2)
-	{
-		tmp_j = buff[j];
-		buff[j] = buff[i - j - 1];
-		buff[i - j - 1] = tmp_j;
-		j++;
 	}
 	ft_putstr_fd(buff, 1);
 	return ft_strlen(buff);
@@ -112,5 +110,3 @@ int tol(int n)
 	}
 	return (tol);
 }
-
-

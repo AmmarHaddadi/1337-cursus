@@ -2,3 +2,9 @@
 */ignore
 .vscode
 .editorconfig
+*.o
+*/*.o
+*.a
+*/*.a
+.DS_Store
+*/*_Store
