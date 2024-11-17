@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/09 16:34:28 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/17 10:47:31 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # include <stddef.h>
+# include <stdarg.h>
 //								part 1
 // ctype.h
 int					ft_isalnum(int c);
@@ -61,4 +62,10 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 
 // 								Printf specific functions
 void				put_unsigned(unsigned int num);
+void				print_address(void *add);
+int					print_16(long long nbr, char upper);
+int					ft_printf(const char *str, ...);
+char				*ft_itoa(int n);
+int					tol_unsigned(unsigned int n);
+int					fsp(char fs, va_list args);
 #endif

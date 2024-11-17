@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 10:18:22 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/10/28 10:28:31 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/16 17:39:16 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	if (fd >= 0)
+	if (fd >= 0 && s)
 	{
 		while (*s)
 			write(fd, s++, 1);
