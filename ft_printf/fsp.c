@@ -24,8 +24,7 @@ int fsp(char fs, va_list args)
 	}
 	else if (fs == 'p')
 	{
-		print_address(va_arg(args, void *));
-		return 14;
+		return print_address(va_arg(args, void *));
 	}
 	else if (fs == 'i' || fs == 'd')
 	{

@@ -2,6 +2,33 @@
 #include <stdint.h>
 #include <sys/unistd.h>
 #include <unistd.h>
+#include <stdlib.h>
+
+int tol_unsigned(unsigned long n)
+{
+	int tol;
+
+	tol = 0;
+	while (n > 0)
+	{
+		n /= 10;
+		tol++;
+	}
+	return (tol);
+}
+
+int tol_hex(unsigned long n)
+{
+	int tol;
+
+	tol = 0;
+	while (n)
+	{
+		n /= 16;
+		tol++;
+	}
+	return (tol);
+}
 
 void put_unsigned(unsigned int num)
 {
@@ -12,23 +39,32 @@ void put_unsigned(unsigned int num)
 	ft_putchar_fd((num % 10) + '0', 1);
 }
 
-void print_address(void *add)
+int print_address(void *add)
 {
-	char *base = "0123456789abcdef";
-	char hex[15] = "0x000000000000";
+	char *hex;
 	if (!add)
 	{
 		ft_putstr_fd("0x0", 1);
-		return;
+		return 3;
 	}
-	unsigned long iptr = (unsigned long)add;
-	int i = 13;
-	while (iptr)
+	char base[] = "0123456789abcdef";
+	unsigned long ulptr = (unsigned long)add;
+	int len = tol_hex(ulptr) + 2;
+
+	if (!(hex = ft_calloc(len + 1, 1)))
+        return 0;
+	hex[len] = '\0';
+	while (ulptr)
 	{
-		hex[i--] = base[iptr % 16];
-		iptr /= 16;
+		hex[--len] = base[ulptr % 16];
+		ulptr /= 16;
 	}
+	hex[0] = '0';
+	hex[1] = 'x';
+	len = ft_strlen(hex);
 	ft_putstr_fd(hex, 1);
+	free(hex);
+	return len;
 }
 
 int print_16(long long nbr, char upper)
@@ -77,15 +113,4 @@ int tol(int n)
 	return (tol);
 }
 
-int tol_unsigned(unsigned int n)
-{
-	int tol;
 
-	tol = 0;
-	while (n > 0)
-	{
-		n /= 10;
-		tol++;
-	}
-	return (tol);
-}
