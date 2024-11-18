@@ -10,11 +10,11 @@ int ft_printf(const char *str, ...)
 
 	while (*str)
 	{
-		// if (*str == '%' && (*str + 1) != '\0')
 		if (*str == '%')
 		{
-			str++;
-			int add = fsp(*str, args);
+			int add = fsp(*(str), args);
+			if (add == -1)
+				return -1;
 			i += add;
 		}
 		else

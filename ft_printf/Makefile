@@ -1,12 +1,12 @@
 CFLAGS := -Wall -Wextra -Werror
-C_FILES := main.c lib.c fsp.c
+C_FILES := ft_printf.c lib.c fsp.c
 O_FILES := $(C_FILES:.c=.o)
 NAME := libftprintf.a
 
 
 all : $(NAME)
 
-%.o : %.c ft_printf.h libft.a
+%.o : %.c ft_printf.h
 	cc $(CFLAGS) -c $<
 
 $(NAME) : $(O_FILES) libft.a
