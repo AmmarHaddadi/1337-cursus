@@ -12,7 +12,7 @@ int ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			int add = fsp(*(str), args);
+			int add = fsp(*(++str), args);
 			if (add == -1)
 				return -1;
 			i += add;

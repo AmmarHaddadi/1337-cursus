@@ -1,112 +1,86 @@
 #include "ft_printf.h"
 #include <stdint.h>
-#include <sys/unistd.h>
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
 
-int tol_unsigned(unsigned long n)
+// general
+int tol_unsigned(unsigned long n, int base)
 {
-	int tol;
+	int tol_unsigned;
 
-	tol = 0;
-	if (n == 0)
-		return 1;
-	while (n > 0)
-	{
-		n /= 10;
-		tol++;
-	}
-	return (tol);
-}
-
-int tol_hex(unsigned long n)
-{
-	int tol;
-
-	tol = 0;
+	tol_unsigned = 0;
 	if (n == 0)
 		return 1;
 	while (n)
 	{
-		n /= 16;
-		tol++;
+		n /= base;
+		tol_unsigned++;
 	}
-	return (tol);
+	return (tol_unsigned);
 }
 
-void put_unsigned(unsigned int num)
+void print_hex(unsigned long n, char upper)
 {
-	if (num >= 10)
-		put_unsigned(num / 10);
-	ft_putchar_fd((num % 10) + '0', 1);
+	char *base = "0123456789abcdef";
+	if (upper == 'X')
+		base = "0123456789ABCDEF";
+	if (n >= 16)
+		print_hex(n / 16, upper);
+	ft_putchar_fd(base[n % 16], 1);
 }
 
-int print_address(void *add)
+// %s
+int print_s(char *x)
 {
-	char *hex;
+	if (!x)
+	{
+		ft_putstr_fd("(null)", 1);
+		return 6;
+	}
+	ft_putstr_fd(x, 1);
+	return ft_strlen(x);
+}
+
+// %p
+int print_p(void *add)
+{
 	if (!add)
 	{
 		ft_putstr_fd("0x0", 1);
 		return 3;
 	}
-	char base[] = "0123456789abcdef";
+	ft_putstr_fd("0x", 1);
 	unsigned long ulptr = (unsigned long)add;
-	int len = tol_hex(ulptr) + 2;
+	print_hex(ulptr, 'x');
+	return (tol_unsigned(ulptr, 16) + 2);
+}
 
-	if (!(hex = ft_calloc(len + 1, 1)))
-		return 0;
-	hex[len] = '\0';
-	while (ulptr)
-	{
-		hex[--len] = base[ulptr % 16];
-		ulptr /= 16;
-	}
-	hex[0] = '0';
-	hex[1] = 'x';
-	len = ft_strlen(hex);
-	ft_putstr_fd(hex, 1);
-	free(hex);
+// %d and %i
+int print_di(int nbr)
+{
+	char *n = ft_itoa(nbr);
+	if (!n)
+		return -1;
+	ft_putstr_fd(n, 1);
+	int len = ft_strlen(n);
+	free(n);
 	return len;
 }
 
-int print_16(unsigned int nbr, char upper)
+// %u
+void print_u(unsigned int num)
 {
-	char *base = "0123456789abcdef";
-	if (upper == 'X')
-		base = "0123456789ABCDEF";
-
-	char *buff = NULL;
-	int len = tol_hex(nbr);
-	if (!(buff = calloc(tol_hex(nbr) + 1, 1)))
-		return 0;
-	buff[len] = 0;
-	int i = 0;
-	if (nbr == 0)
-	{
-		buff[i++] = '0';
-	}
-	else
-	{
-		while (nbr)
-		{
-			buff[--len] = base[nbr % 16];
-			nbr /= 16;
-		}
-	}
-	ft_putstr_fd(buff, 1);
-	return ft_strlen(buff);
+	if (num >= 10)
+		print_u(num / 10);
+	ft_putchar_fd((num % 10) + '0', 1);
 }
 
-int tol(int n)
+// %x and %X
+int print_x(unsigned int nbr, char upper)
 {
-	int tol;
-
-	tol = 0;
-	while (n > 0)
-	{
-		n /= 10;
-		tol++;
-	}
-	return (tol);
+	print_hex(nbr, upper);
+	return tol_unsigned(nbr, 16);
 }
+
+

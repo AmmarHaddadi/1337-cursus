@@ -15,34 +15,18 @@ int fsp(char fs, va_list args)
 		return (1);
 	}
 	else if (fs == 's')
-	{
-		char *x = va_arg(args, char *);
-		if (!x)
-			x = "(null)";
-		ft_putstr_fd(x, 1);
-		return ft_strlen(x);
-	}
+		return print_s(va_arg(args, char *));
 	else if (fs == 'p')
-	{
-		return print_address(va_arg(args, void *));
-	}
+		return print_p(va_arg(args, void *));
 	else if (fs == 'i' || fs == 'd')
-	{
-		char *n = ft_itoa(va_arg(args, int));
-		ft_putstr_fd(n, 1);
-		int len = ft_strlen(n);
-		free(n);
-		return len;
-	}
+		return print_di(va_arg(args, int));
 	else if (fs == 'u')
 	{
 		unsigned int num = va_arg(args, unsigned int);
-		put_unsigned(num);
-		return tol_unsigned(num);
+		print_u(num);
+		return tol_unsigned(num, 10);
 	}
 	else if (fs == 'x' || fs == 'X')
-	{
-		return print_16(va_arg(args, unsigned int), fs);
-	}
+		return print_x(va_arg(args, unsigned int), fs);
 	return (0);
 }
