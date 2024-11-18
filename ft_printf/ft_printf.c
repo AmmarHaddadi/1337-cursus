@@ -8,6 +8,8 @@ int ft_printf(const char *str, ...)
 	va_list args;
 	va_start(args, str);
 
+	if (!str || write(1, 0, 0) < 0)
+		return -1;
 	while (*str)
 	{
 		if (*str == '%')
@@ -28,3 +30,4 @@ int ft_printf(const char *str, ...)
 	va_end(args);
 	return (i);
 }
+

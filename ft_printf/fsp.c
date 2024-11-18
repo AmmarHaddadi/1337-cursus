@@ -1,4 +1,3 @@
-// format specifiers logic
 #include "ft_printf.h"
 #include <stdlib.h>
 
@@ -10,10 +9,7 @@ int fsp(char fs, va_list args)
 		return (1);
 	}
 	else if (fs == 'c')
-	{
-		ft_putchar_fd(va_arg(args, int), 1);
-		return (1);
-	}
+		return print_c(va_arg(args, int));
 	else if (fs == 's')
 		return print_s(va_arg(args, char *));
 	else if (fs == 'p')

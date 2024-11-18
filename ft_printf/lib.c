@@ -30,6 +30,12 @@ void print_hex(unsigned long n, char upper)
 	ft_putchar_fd(base[n % 16], 1);
 }
 
+// %c
+int print_c(char c)
+{
+	return write(1, &c, 1);
+}
+
 // %s
 int print_s(char *x)
 {
@@ -38,8 +44,14 @@ int print_s(char *x)
 		ft_putstr_fd("(null)", 1);
 		return 6;
 	}
-	ft_putstr_fd(x, 1);
-	return ft_strlen(x);
+	int i = 0;
+	while(x[i])
+	{
+		if (!write(1, &x[i], 1))
+			return -1;
+		i++;
+	}
+	return i;
 }
 
 // %p
@@ -82,5 +94,3 @@ int print_x(unsigned int nbr, char upper)
 	print_hex(nbr, upper);
 	return tol_unsigned(nbr, 16);
 }
-
-

@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/18 12:53:04 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:16:26 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FTPRINTF_H
 # include <stddef.h>
 # include <stdarg.h>
+# include <unistd.h>
 //								part 1
 // ctype.h
 int					ft_isalnum(int c);
@@ -62,11 +63,12 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 
 // 								Printf specific functions
 int					ft_printf(const char *str, ...);
+int					fsp(char fs, va_list args);
+int					print_c(char c);
 int					print_s(char *x);
 int					print_di(int nbr);
 void				print_u(unsigned int num);
 int					print_x(unsigned int nbr, char upper);
 int					print_p(void *add);
 int					tol_unsigned(unsigned long n, int base);
-int					fsp(char fs, va_list args);
 #endif
