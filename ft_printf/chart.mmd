@@ -1,0 +1,16 @@
+flowchart TD
+    A[ft_printf.c<br>ft_printf] --> B[Parse Format String]
+    B --> C{Is '%' ?}
+    C -->|No| D[Write Character]
+    %% C -->|Yes| E[fsp.c<br>Format Specifier Router]
+
+    %% E -->|%c| F[lib.c<br/>print_c]
+    %% E -->|%s| G[lib.c<br>print_s]
+    %% E -->|%p| H[lib.c<br>print_p]
+    %% E -->|%d/%i| I[lib.c<br>print_di]
+    %% E -->|%u| J[lib.c<br>print_u]
+    %% E -->|%x/%X| K[lib.c<br>print_x]
+    %% E -->|%%| L[Print %]
+
+    H --> M[print_hex<br>Helper]
+    K --> M

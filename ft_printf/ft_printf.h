@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/18 16:16:26 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:40:39 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,14 @@ void				print_u(unsigned int num);
 int					print_x(unsigned int nbr, char upper);
 int					print_p(void *add);
 int					tol_unsigned(unsigned long n, int base);
+
+// 								Bonus printf
+typedef struct s_flags
+{
+    int width;      // Minimum field width
+    int precision;  // Precision value
+    int minus;      // Left justify flag
+    int zero;       // Zero padding flag
+    int dot;        // Precision flag
+} t_flags;
 #endif
