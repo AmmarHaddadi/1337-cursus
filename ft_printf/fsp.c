@@ -1,28 +1,108 @@
 #include "ft_printf.h"
+#include <stdint.h>
+#include <unistd.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-int fsp(char fs, va_list args)
+// returns the length of a number in a given base
+int tol_unsigned(unsigned long n, int base)
 {
-	if (fs == '%')
+	int tol_unsigned;
+
+	tol_unsigned = 0;
+	if (n == 0)
+		return 1;
+	while (n)
 	{
-		ft_putchar_fd('%', 1);
-		return (1);
+		n /= base;
+		tol_unsigned++;
 	}
-	else if (fs == 'c')
-		return print_c(va_arg(args, int));
-	else if (fs == 's')
-		return print_s(va_arg(args, char *));
-	else if (fs == 'p')
-		return print_p(va_arg(args, void *));
-	else if (fs == 'i' || fs == 'd')
-		return print_di(va_arg(args, int));
-	else if (fs == 'u')
+	return (tol_unsigned);
+}
+
+// returns a string of the hexadecimal representation of a number
+char	*convert2hex(unsigned long n, char upper)
+{
+	char *base = "0123456789abcdef";
+	char *buffer;
+	int len = tol_unsigned(n, 16);
+
+	if (upper == 'X')
+		base = "0123456789ABCDEF";
+	buffer = malloc(len + 1);
+	if (!buffer)
+		return NULL;
+	buffer[len] = '\0';
+	if (n == 0)
+		buffer[--len] = '0';
+	while (n)
 	{
-		unsigned int num = va_arg(args, unsigned int);
-		print_u(num);
-		return tol_unsigned(num, 10);
+		buffer[--len] = base[n % 16];
+		n /= 16;
 	}
-	else if (fs == 'x' || fs == 'X')
-		return print_x(va_arg(args, unsigned int), fs);
-	return (0);
+	return buffer;
+}
+
+// %c
+char    *format_c(int c)
+{
+    char    *str;
+
+    str = malloc(2);
+    if (!str)
+        return (NULL);
+    str[0] = (unsigned char)c;
+    str[1] = '\0';
+    return (str);
+}
+
+// %s
+char	*format_s(char *str)
+{
+	if (!str)
+		return ft_strdup("(null)");
+	return ft_strdup(str);
+}
+
+// %p
+char *format_p(void *add)
+{
+	if (!add)
+		return ft_strdup("0x0");
+	unsigned long ulptr = (unsigned long)add;
+	char *hex = convert2hex(ulptr, 'x');
+	if (!hex)
+		return NULL;
+	char *ptr = ft_strjoin("0x", hex);
+	free(hex);
+	return ptr;
+}
+
+// %d and %i
+char	*format_di(int nbr)
+{
+	char *n = ft_itoa(nbr);
+	if (!n)
+		return NULL;
+	return n;
+}
+
+// %u
+char *format_u(unsigned int num)
+{
+	char *str;
+	int len = tol_unsigned(num, 10);
+
+	str = malloc(len + 1);
+	if (!str)
+		return NULL;
+	str[len] = '\0';
+	if (num == 0)
+		str[--len] = '0';
+	while (num)
+	{
+		str[--len] = (num % 10) + '0';
+		num /= 10;
+	}
+	return str;
 }

@@ -1,0 +1,35 @@
+sequenceDiagram
+    create participant ft_printf
+
+    loop for each % present in text
+    %% flags parsin
+    create participant flags-parser
+    ft_printf ->> flags-parser: pointer to %
+    destroy flags-parser
+    flags-parser ->> ft_printf: flags struct
+
+
+    %% fsp
+    create participant fsp-router
+    ft_printf ->> fsp-router: the format specifier
+    create participant fsp
+    fsp-router ->> fsp: format and string
+    destroy fsp
+    fsp ->> fsp-router: formatted string
+    destroy fsp-router
+    fsp-router ->> ft_printf : formatted string
+
+    %% flags
+    create participant flags-router
+    ft_printf ->> flags-router: flags struct + formatted string
+    create participant flags
+    flags-router ->> flags: formatted string
+    destroy flags
+    flags ->> flags-router: formatted string w flags applied
+    destroy flags-router
+    flags-router ->> ft_printf : formatted string w flags applied
+    end
+
+    %% the actual print
+    note right of ft_printf: print the final result and count each char
+    %% ft_printf ->> ft_printf: print the final result and count each char

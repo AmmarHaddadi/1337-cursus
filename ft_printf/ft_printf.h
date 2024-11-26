@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/18 16:16:26 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:08:23 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,25 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 
 // 								Printf specific functions
 int					ft_printf(const char *str, ...);
-int					fsp(char fs, va_list args);
-int					print_c(char c);
-int					print_s(char *x);
-int					print_di(int nbr);
-void				print_u(unsigned int num);
-int					print_x(unsigned int nbr, char upper);
-int					print_p(void *add);
+char				*fsp(char fs, va_list args);
+char				*format_c(int c);
+char				*format_s(char *x);
+char				*format_p(void *add);
+char				*format_di(int nbr);
+char				*format_u(unsigned int num);
 int					tol_unsigned(unsigned long n, int base);
+char				*convert2hex(unsigned long n, char upper);
+
+// 								Bonus printf
+typedef struct s_flags
+{
+    int minus;    // '-' left justify
+    int plus;     // '+' force sign
+    int zero;     // '0' zero padding
+    int hash;     // '#' 0x prefix
+    int space;    // ' ' space if no sign
+    int width;    // minimum field width
+    int precision; // .precision value
+    int dot;      // precision was specified
+} t_flags;
 #endif
