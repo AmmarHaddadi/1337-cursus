@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/26 16:08:23 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/26 16:43:55 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,11 @@ char				*convert2hex(unsigned long n, char upper);
 typedef struct s_flags
 {
     int minus;    // '-' left justify
-    int plus;     // '+' force sign
     int zero;     // '0' zero padding
+    int precision; // .precision value
+    int width;    // minimum field width
     int hash;     // '#' 0x prefix
     int space;    // ' ' space if no sign
-    int width;    // minimum field width
-    int precision; // .precision value
-    int dot;      // precision was specified
+    int plus;     // '+' force sign
 } t_flags;
 #endif

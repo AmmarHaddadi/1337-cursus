@@ -1,9 +1,6 @@
-- [x] %c Prints a single character.
-- [x] %s Prints a string (as defined by the common C convention).
-- [x] %p The void * pointer argument has to be printed in hexadecimal format.
-- [x] %d Prints a decimal (base 10) number.
-- [x] %i Prints an integer in base 10.
-- [x] %u Prints an unsigned decimal (base 10) number.
-- [x] %x Prints a number in hexadecimal (base 16) lowercase format.
-- [x] %X Prints a number in hexadecimal (base 16) uppercase format.
-- [x] %% Prints a percent sign.
+returned strings from fsp will be freeable strings so remember to free
+on error it returns a NULL
+NULL handling is at the printf level
+
+#notes :
+- when using \0 wilth %c, the riginal printf returns 0: ma katkteb walo. ya3ni no need to handle it

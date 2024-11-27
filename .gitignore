@@ -8,3 +8,4 @@
 */*.a
 .DS_Store
 */*_Store
+*/testing.c
