@@ -15,7 +15,8 @@ int ft_printf(const char *str, ...)
 	{
 		if (*str == '%')
 		{
-			char *formatted = fsp(*(++str), args);
+			t_flags *flags = parse_flags(++str);
+			char *formatted = fsp(flags->fsp, args);
 			if (!formatted)
 				return -1;
 			int write_ret = write(1, formatted, ft_strlen(formatted));
@@ -38,5 +39,3 @@ int ft_printf(const char *str, ...)
 	va_end(args);
 	return (i);
 }
-
-

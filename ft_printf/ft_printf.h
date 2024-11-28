@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/26 16:43:55 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/28 13:38:44 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stddef.h>
 # include <stdarg.h>
 # include <unistd.h>
+#include <stdlib.h>
 //								part 1
 // ctype.h
 int					ft_isalnum(int c);
@@ -78,9 +79,11 @@ typedef struct s_flags
     int minus;    // '-' left justify
     int zero;     // '0' zero padding
     int precision; // .precision value
-    int width;    // minimum field width
     int hash;     // '#' 0x prefix
-    int space;    // ' ' space if no sign
     int plus;     // '+' force sign
+    int space;    // ' ' space if no sign
+    int width;    // minimum field width
+    char fsp;
 } t_flags;
+t_flags *parse_flags(const char *str);
 #endif
