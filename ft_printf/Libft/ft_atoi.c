@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:46:07 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/10 16:18:35 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/29 21:21:59 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,13 +36,13 @@ int	ft_atoi(const char *str)
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
-{
-	printf("%d", ft_atoi(""));
+// int main()
+// {
+// 	printf("%d", ft_atoi(""));
 	// printf("%d", atoi("    ")); //segfaults
 	// printf("%d", atoi("123")); //segfaults
 
-}
+// }
 
 // #include <stdio.h>
 // #include <stdlib.h> // For the original atoi
