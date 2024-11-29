@@ -29,7 +29,7 @@ t_flags *parse_flags(const char *str)
     {
         size = 0;
         if (*str == '-')
-            flags->minus = 1;            
+            flags->minus = 1;
         else if (*str == '0')
         {
             flags->zero = 1;
@@ -58,4 +58,16 @@ t_flags *parse_flags(const char *str)
     }
     flags->fsp = *str;
     return flags;
+}
+
+char *flag_hash(char *str, char fsp)
+{
+	if (!str || !fsp)
+		return NULL;
+
+	char *prefix = "0x";
+	if (fsp == 'X')
+		prefix = "0X";
+	char *new_str = ft_strjoin(prefix, str);
+	return new_str;
 }

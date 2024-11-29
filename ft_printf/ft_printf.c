@@ -1,6 +1,4 @@
 #include "ft_printf.h"
-#include <stdarg.h>
-#include <stdlib.h>
 
 int ft_printf(const char *str, ...)
 {
@@ -16,10 +14,15 @@ int ft_printf(const char *str, ...)
 		if (*str == '%')
 		{
 			t_flags *flags = parse_flags(++str);
+			if (!flags)
+				return -1;
 			char *formatted = fsp(flags->fsp, args);
 			if (!formatted)
 				return -1;
-			int write_ret = write(1, formatted, ft_strlen(formatted));
+			char *flagged = apply_flags(formatted, flags);
+			if (!flagged)
+				return -1;
+			int write_ret = write(1, flagged, ft_strlen(flagged));
             free(formatted);
             if (write_ret < 0)
             {
@@ -30,7 +33,7 @@ int ft_printf(const char *str, ...)
 		}
 		else
 		{
-			ft_putchar_fd(*str, 1);
+			write(1, str, 1);
 			i++;
 		}
 		str++;
