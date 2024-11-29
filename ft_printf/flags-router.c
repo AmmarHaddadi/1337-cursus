@@ -9,7 +9,9 @@ char *apply_flags(char *str, t_flags *flags)
 	if (flags -> plus)
 		final_str = flag_plus(final_str);
 	if (flags -> zero)
-		final_str = flag_zero(final_str, flags->width);
+		final_str = flag_zero_width(final_str, flags->width, '0');
+	else if (flags -> width)
+		final_str = flag_zero_width(final_str, flags->width, ' ');
 	if (flags -> precision)
 		final_str = flag_precision(final_str, flags);
 

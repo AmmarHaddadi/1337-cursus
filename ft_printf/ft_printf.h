@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/29 18:01:31 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/29 18:09:20 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ t_flags	*parse_flags(const char *str);
 char	*apply_flags(char *str, t_flags *flags);
 char	*flag_hash(char *str, char fsp);
 char	*flag_plus(char *str);
-char	*flag_zero(char *str, int size);
+char 	*flag_zero_width(char *str, int size, char filler);
 char	*flag_precision(char *str, t_flags *flags);
 
 // debugging

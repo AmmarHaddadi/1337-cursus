@@ -82,7 +82,7 @@ char *flag_plus(char *str)
 		return ft_strdup(str);
 }
 
-char *flag_zero(char *str, int size)
+char *flag_zero_width(char *str, int size, char filler)
 {
 	if (!str)
 		return NULL;
@@ -93,7 +93,7 @@ char *flag_zero(char *str, int size)
 	char *new_str = malloc(size + 1);
 	if (!new_str)
 		return NULL;
-	ft_memset(new_str, '0', needed);
+	ft_memset(new_str, filler, needed);
 	ft_strlcpy(new_str + needed, str, size);
 	return new_str;
 }
@@ -104,5 +104,6 @@ char *flag_precision(char *str, t_flags *flags)
 	if (flags -> fsp == 's')
 		return ft_substr(str, 0, flags->precision);
 	else
-		return flag_zero(str, flags->precision);
+		return flag_zero_width(str, flags->precision, '0');
 }
+
