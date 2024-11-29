@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/29 15:19:13 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/29 15:50:13 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,12 @@ typedef struct s_flags
     int width;    // minimum field width
     char fsp;
 } t_flags;
-t_flags *parse_flags(const char *str);
-char *apply_flags(char *str, t_flags *flags);
-char *flag_hash(char *str, char fsp);
+t_flags	*parse_flags(const char *str);
+char	*apply_flags(char *str, t_flags *flags);
+char	*flag_hash(char *str, char fsp);
+char	*flag_plus(char *str);
+
+// debugging
+#include <stdio.h>
+void    print_flags(t_flags *flags);
 #endif

@@ -1,5 +1,5 @@
 CFLAGS := -Wall -Wextra -Werror
-C_FILES := ft_printf.c fsp-router.c fsp.c
+C_FILES := ft_printf.c fsp-router.c fsp.c flags.c flags-router.c
 O_FILES := $(C_FILES:.c=.o)
 NAME := libftprintf.a
 

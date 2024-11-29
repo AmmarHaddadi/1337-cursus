@@ -71,3 +71,13 @@ char *flag_hash(char *str, char fsp)
 	char *new_str = ft_strjoin(prefix, str);
 	return new_str;
 }
+
+char *flag_plus(char *str)
+{
+	if (!str)
+		return NULL;
+	if (str[0] != '-')
+		return (ft_strjoin("+", str));
+	else
+		return ft_strdup(str);
+}
