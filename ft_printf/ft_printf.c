@@ -16,7 +16,7 @@ int ft_printf(const char *str, ...)
 			t_flags *flags = parse_flags(++str);
 			if (!flags)
 				return -1;
-			print_flags(flags);
+			// print_flags(flags);
 			char *formatted = fsp(flags->fsp, args);
 			if (!formatted)
 				return -1;

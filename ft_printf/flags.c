@@ -81,3 +81,27 @@ char *flag_plus(char *str)
 	else
 		return ft_strdup(str);
 }
+
+// needs #4
+// char *flag_precision(char *str, t_flags *flags)
+// {
+// 	if (flags -> fsp == 's')
+// 		return ft_substr(str, 0, flags->precision);
+// 	else if
+// }
+
+char *flag_zero(char *str, int size)
+{
+	if (!str)
+		return NULL;
+	int s_len = ft_strlen(str);
+	if (!size || s_len >= size)
+		return ft_strdup(str);
+	int needed = size - s_len;
+	char *new_str = malloc(size + 1);
+	if (!new_str)
+		return NULL;
+	ft_memset(new_str, '0', needed);
+	ft_strlcpy(new_str + needed, str, size);
+	return new_str;
+}

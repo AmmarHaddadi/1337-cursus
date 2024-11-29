@@ -1,6 +1,6 @@
 #include "ft_printf.h"
 
-// if conditions must be ordred right
+// if conditions must be ordred right, sm flags don't execute when others r present in original printf
 char *apply_flags(char *str, t_flags *flags)
 {
 	char *final_str = str;
@@ -8,6 +8,8 @@ char *apply_flags(char *str, t_flags *flags)
 		final_str = flag_hash(final_str, flags->fsp);
 	if (flags -> plus)
 		final_str = flag_plus(final_str);
+	if (flags -> zero)
+		final_str = flag_zero(final_str, flags->width);
 
 	return final_str;
 }
