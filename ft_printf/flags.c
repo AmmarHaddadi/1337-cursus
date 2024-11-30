@@ -18,45 +18,44 @@ t_flags *init_flags(void)
     return (flags);
 }
 
-t_flags *parse_flags(const char *str)
+t_flags *parse_flags(const char **str)
 {
     int size;
     t_flags *flags = init_flags();
     if (!flags)
         return NULL;
-
-    while (*str && *str != 'c' && *str != 's' && *str != 'p' && *str != 'd' && *str != 'i' && *str != 'u' && *str != 'x' && *str != 'X')
+    while (**str && **str != 'c' && **str != 's' && **str != 'p' && **str != 'd' && **str != 'i' && **str != 'u' && **str != 'x' && **str != 'X')
     {
         size = 0;
-        if (*str == '-')
+        if (**str == '-')
             flags->minus = 1;
-        else if (*str == '0')
+        else if (**str == '0')
         {
             flags->zero = 1;
         }
-        else if (*str == '.')
+        else if (**str == '.')
         {
-            size = ft_atoi(++str);
+            size = ft_atoi(++(*str));
             flags->precision = size;
-            str += tol_unsigned(size, 10);
+            *str += tol_unsigned(size, 10);
             continue;
         }
-        else if (*str == '#')
+        else if (**str == '#')
             flags->hash = 1;
-        else if (*str == '+')
+        else if (**str == '+')
             flags->plus = 1;
-        else if (*str == ' ')
+        else if (**str == ' ')
             flags->space = 1;
-        else if (ft_isdigit(*str))
+        else if (ft_isdigit(**str))
         {
-            size = ft_atoi(str);
+            size = ft_atoi(*str);
             flags->width = size;
-            str += tol_unsigned(size, 10);
+            *str += tol_unsigned(size, 10);
             continue;
         }
-        str++;
+        (*str)++;
     }
-    flags->fsp = *str;
+    flags->fsp = **str;
     return flags;
 }
 

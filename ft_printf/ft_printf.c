@@ -2,28 +2,28 @@
 
 int ft_printf(const char *str, ...)
 {
-	int i = 0;
+    int i = 0;
 
-	va_list args;
-	va_start(args, str);
+    va_list args;
+    va_start(args, str);
 
-	if (!str || write(1, 0, 0) < 0)
-		return -1;
-	while (*str)
-	{
-		if (*str == '%')
-		{
-			t_flags *flags = parse_flags(++str);
-			if (!flags)
-				return -1;
-			// print_flags(flags);
-			char *formatted = fsp(flags->fsp, args);
-			if (!formatted)
-				return -1;
-			char *flagged = apply_flags(formatted, flags);
-			if (!flagged)
-				return -1;
-			int write_ret = write(1, flagged, ft_strlen(flagged));
+    if (!str || write(1, 0, 0) < 0)
+        return -1;
+    while (*str)
+    {
+        if (*str == '%')
+        {
+            t_flags *flags = parse_flags(&str);
+            if (!flags)
+                return -1;
+            // print_flags(flags);
+            char *formatted = fsp(flags->fsp, args);
+            if (!formatted)
+                return -1;
+            char *flagged = apply_flags(formatted, flags);
+            if (!flagged)
+                return -1;
+            int write_ret = write(1, flagged, ft_strlen(flagged));
             free(formatted);
             if (write_ret < 0)
             {
@@ -31,15 +31,15 @@ int ft_printf(const char *str, ...)
                 return (-1);
             }
             i += write_ret;
-		}
-		else
-		{
+        }
+        else
+        {
 			write(1, str, 1);
 			i++;
-		}
-		str++;
-	}
+        }
+        str++;
+    }
 
-	va_end(args);
+    va_end(args);
 	return (i);
 }
