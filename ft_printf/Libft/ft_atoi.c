@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/23 19:46:07 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/29 21:21:59 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/29 21:27:24 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ int	ft_atoi(const char *str)
 	return (total * sign);
 }
 
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
 // int main()
 // {
