@@ -3,19 +3,47 @@
 // if conditions must be ordred right, sm flags don't execute when others r present in original printf
 char *apply_flags(char *str, t_flags *flags)
 {
-	char *final_str = str;
-	if (flags -> hash)
-		final_str = flag_hash(final_str, flags->fsp);
-	if (flags -> plus)
-		final_str = flag_plus(final_str);
-	if (flags -> zero)
-		final_str = flag_zero_width(final_str, flags->width, '0');
-	else if (flags -> width)
-		final_str = flag_zero_width(final_str, flags->width, ' ');
-	if (flags -> precision)
-		final_str = flag_precision(final_str, flags);
+    char *final_str = str;
+    char *temp_str;
 
-	return final_str;
+	if (flags->hash)
+    {
+        temp_str = final_str;
+        final_str = flag_hash(final_str, flags->fsp);
+        if (temp_str != str) free(temp_str);
+    }
+    if (flags->plus)
+    {
+        temp_str = final_str;
+        final_str = flag_plus(final_str);
+        if (temp_str != str) free(temp_str);
+    }
+    if (flags->precision)
+    {
+        temp_str = final_str;
+        final_str = flag_precision(final_str, flags);
+        if (temp_str != str) free(temp_str);
+    }
+    if (flags->minus)
+    {
+        temp_str = final_str;
+        final_str = flag_minus(final_str, flags->width);
+        if (temp_str != str) free(temp_str);
+    }
+    else if (flags->zero)
+    {
+        temp_str = final_str;
+        final_str = flag_zero_width(final_str, flags->width, '0');
+        if (temp_str != str) free(temp_str);
+    }
+    else if (flags->width)
+    {
+        temp_str = final_str;
+        final_str = flag_zero_width(final_str, flags->width, ' ');
+        if (temp_str != str) free(temp_str);
+    }
+
+    return final_str;
 }
 
 void    print_flags(t_flags *flags)

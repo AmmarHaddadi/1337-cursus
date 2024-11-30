@@ -98,12 +98,28 @@ char *flag_zero_width(char *str, int size, char filler)
 	return new_str;
 }
 
-// needs #4
 char *flag_precision(char *str, t_flags *flags)
 {
 	if (flags -> fsp == 's')
 		return ft_substr(str, 0, flags->precision);
 	else
 		return flag_zero_width(str, flags->precision, '0');
+}
+
+char *flag_minus(char *str, int size)
+{
+	if (!str)
+		return NULL;
+	int s_len = ft_strlen(str);
+	if (!size || s_len >= size)
+		return ft_strdup(str);
+	int needed = size - s_len;
+	char *new_str = malloc(size + 1);
+	if (!new_str)
+		return NULL;
+	ft_strlcpy(new_str, str, s_len + 1);
+	ft_memset(new_str + s_len, ' ', needed);
+	new_str[size] = '\0';
+	return new_str;
 }
 
