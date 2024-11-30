@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/11/30 16:38:19 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/11/30 17:22:15 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct s_flags
 t_flags	*parse_flags(const char *str);
 char	*apply_flags(char *str, t_flags *flags);
 char	*flag_hash(char *str, char fsp);
-char	*flag_plus(char *str);
+char	*flag_plus_space(char *str, char *sign);
 char 	*flag_zero_width(char *str, int size, char filler);
 char	*flag_precision(char *str, t_flags *flags);
 char	*flag_minus(char *str, int size);

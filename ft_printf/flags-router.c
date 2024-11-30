@@ -15,7 +15,13 @@ char *apply_flags(char *str, t_flags *flags)
     if (flags->plus)
     {
         temp_str = final_str;
-        final_str = flag_plus(final_str);
+        final_str = flag_plus_space(final_str, "+");
+        if (temp_str != str) free(temp_str);
+    }
+    else if (flags->space)
+    {
+        temp_str = final_str;
+        final_str = flag_plus_space(final_str, " ");
         if (temp_str != str) free(temp_str);
     }
     if (flags->precision)

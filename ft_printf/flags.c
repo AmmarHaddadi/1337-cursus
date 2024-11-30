@@ -72,12 +72,12 @@ char *flag_hash(char *str, char fsp)
 	return new_str;
 }
 
-char *flag_plus(char *str)
+char *flag_plus_space(char *str, char *sign)
 {
 	if (!str)
 		return NULL;
 	if (str[0] != '-')
-		return (ft_strjoin("+", str));
+		return (ft_strjoin(sign, str));
 	else
 		return ft_strdup(str);
 }
