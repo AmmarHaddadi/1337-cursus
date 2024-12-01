@@ -7,8 +7,8 @@ NULL handling is at the printf level
 - since width flag can be combined with any flag it makes sence to execute it last
 
 
-clang -g -O0 -fno-omit-frame-pointer -Wall -Wextra -Werror -fsanitize=address -fstack-protector -fanalyzer
+clang -g -O0 -fno-omit-frame-pointer -Wall -Wextra -Werror -fsanitize=address -fstack-protector
 
 # only one at a time
--fsanitize=leak 
+-fsanitize=leak
 -fsanitize=undefined

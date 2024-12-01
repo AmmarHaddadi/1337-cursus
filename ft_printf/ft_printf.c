@@ -16,7 +16,6 @@ int ft_printf(const char *str, ...)
             t_flags *flags = parse_flags(&str);
             if (!flags)
                 return -1;
-            // print_flags(flags);
             char *formatted = fsp(flags->fsp, args);
             if (!formatted)
                 return -1;
@@ -25,6 +24,8 @@ int ft_printf(const char *str, ...)
                 return -1;
             int write_ret = write(1, flagged, ft_strlen(flagged));
             free(formatted);
+			free(flagged);
+			free(flags);
             if (write_ret < 0)
             {
                 va_end(args);

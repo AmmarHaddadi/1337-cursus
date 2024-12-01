@@ -4,50 +4,21 @@
 char *apply_flags(char *str, t_flags *flags)
 {
     char *final_str = str;
-    char *temp_str;
 
 	if (flags->hash)
-    {
-        temp_str = final_str;
         final_str = flag_hash(final_str, flags->fsp);
-        if (temp_str != str) free(temp_str);
-    }
     if (flags->plus)
-    {
-        temp_str = final_str;
         final_str = flag_plus_space(final_str, "+");
-        if (temp_str != str) free(temp_str);
-    }
     else if (flags->space)
-    {
-        temp_str = final_str;
         final_str = flag_plus_space(final_str, " ");
-        if (temp_str != str) free(temp_str);
-    }
     if (flags->precision)
-    {
-        temp_str = final_str;
         final_str = flag_precision(final_str, flags);
-        if (temp_str != str) free(temp_str);
-    }
     if (flags->minus)
-    {
-        temp_str = final_str;
         final_str = flag_minus(final_str, flags->width);
-        if (temp_str != str) free(temp_str);
-    }
     else if (flags->zero)
-    {
-        temp_str = final_str;
         final_str = flag_zero_width(final_str, flags->width, '0');
-        if (temp_str != str) free(temp_str);
-    }
     else if (flags->width)
-    {
-        temp_str = final_str;
         final_str = flag_zero_width(final_str, flags->width, ' ');
-        if (temp_str != str) free(temp_str);
-    }
 
     return final_str;
 }
