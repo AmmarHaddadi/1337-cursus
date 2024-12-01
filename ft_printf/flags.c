@@ -24,7 +24,7 @@ t_flags *parse_flags(const char **str)
 	t_flags *flags = init_flags();
 	if (!flags)
 		return NULL;
-	while (**str && **str != 'c' && **str != 's' && **str != 'p' && **str != 'd' && **str != 'i' && **str != 'u' && **str != 'x' && **str != 'X')
+	while (**str && **str != 'c' && **str != 's' && **str != 'p' && **str != 'd' && **str != 'i' && **str != 'u' && **str != 'x' && **str != 'X' && **str != '%')
 	{
 		size = 0;
 		if (**str == '-')

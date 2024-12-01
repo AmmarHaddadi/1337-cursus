@@ -2,7 +2,7 @@
 
 int ft_printf(const char *str, ...)
 {
-    int i = 0;
+    int i = 0; 
 
     va_list args;
     va_start(args, str);
@@ -13,6 +13,7 @@ int ft_printf(const char *str, ...)
     {
         if (*str == '%')
         {
+			++str;
             t_flags *flags = parse_flags(&str);
             if (!flags)
                 return -1;
