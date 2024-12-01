@@ -23,7 +23,6 @@ int ft_printf(const char *str, ...)
             if (!flagged)
                 return -1;
             int write_ret = write(1, flagged, ft_strlen(flagged));
-            free(formatted);
 			free(flagged);
 			free(flags);
             if (write_ret < 0)
