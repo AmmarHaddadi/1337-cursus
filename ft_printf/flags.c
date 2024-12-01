@@ -77,7 +77,7 @@ char *flag_plus_space(char *str, char *sign)
 	if (!str)
 		return NULL;
 	char *new_str = NULL;
-	if (str[0] = '-')
+	if (str[0] == '-')
 		new_str = ft_strdup(str);
 	else
 		new_str = ft_strjoin(sign, str);
