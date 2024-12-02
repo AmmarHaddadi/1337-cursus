@@ -2,7 +2,7 @@
 
 int ft_printf(const char *str, ...)
 {
-    int i = 0; 
+    int i = 0;
 
     va_list args;
     va_start(args, str);

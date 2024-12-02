@@ -83,10 +83,9 @@ char *flag_plus_space(char *str, char *sign)
 		new_str = ft_strjoin(sign, str);
 	free(str);
 	return new_str;
-
 }
 
-char *flag_zero_width(char *str, int size, char filler)
+char *flag_zero_width(char *str, int size, char filler, t_flags *flags)
 {
 	if (!str)
 		return NULL;
@@ -94,6 +93,12 @@ char *flag_zero_width(char *str, int size, char filler)
 	if (!size || s_len >= size)
 		return ft_strdup(str);
 	int needed = size - s_len;
+	if (flags->hash)
+		needed -= 2;
+	if (flags->plus || flags->space)
+		needed--;
+	if (needed <= 0)
+		return ft_strdup(str);
 	char *new_str = malloc(size + 1);
 	if (!new_str)
 		return NULL;
@@ -112,10 +117,10 @@ char *flag_precision(char *str, t_flags *flags)
 		return new;
 	}
 	else
-		return flag_zero_width(str, flags->precision, '0');
+		return flag_zero_width(str, flags->precision, '0', flags);
 }
 
-char *flag_minus(char *str, int size)
+char *flag_minus(char *str, int size, t_flags *flags)
 {
 	if (!str)
 		return NULL;
@@ -123,12 +128,18 @@ char *flag_minus(char *str, int size)
 	if (!size || s_len >= size)
 		return ft_strdup(str);
 	int needed = size - s_len;
+	if (flags->hash)
+		needed -= 2;
+	if (flags->plus || flags->space)
+		needed--;
+	if (needed <= 0)
+		return ft_strdup(str);
 	char *new_str = malloc(size + 1);
 	if (!new_str)
 		return NULL;
 	ft_strlcpy(new_str, str, s_len + 1);
 	ft_memset(new_str + s_len, ' ', needed);
-	new_str[size] = '\0';
+	new_str[ s_len + needed] = '\0';
 	free(str);
 	return new_str;
 }

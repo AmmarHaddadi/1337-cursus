@@ -5,20 +5,20 @@ char *apply_flags(char *str, t_flags *flags)
 {
 	char *final_str = str;
 
+	if (flags->precision)
+		final_str = flag_precision(final_str, flags);
+	if (flags->minus)
+		final_str = flag_minus(final_str, flags->width, flags);
+	else if (flags->zero && !flags->precision)
+		final_str = flag_zero_width(final_str, flags->width, '0', flags);
+	else if (flags->width)
+		final_str = flag_zero_width(final_str, flags->width, ' ', flags);
 	if (flags->plus)
 		final_str = flag_plus_space(final_str, "+");
 	else if (flags->space)
 		final_str = flag_plus_space(final_str, " ");
-	if (flags->precision)
-		final_str = flag_precision(final_str, flags);
 	if (flags->hash)
 		final_str = flag_hash(final_str, flags->fsp);
-	if (flags->minus)
-		final_str = flag_minus(final_str, flags->width);
-	else if (flags->zero)
-		final_str = flag_zero_width(final_str, flags->width, '0');
-	else if (flags->width)
-		final_str = flag_zero_width(final_str, flags->width, ' ');
 	return final_str;
 }
 
