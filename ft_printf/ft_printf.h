@@ -6,7 +6,7 @@
 /*   By: ahaddadi <ahaddadi@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/09 16:30:47 by ahaddadi          #+#    #+#             */
-/*   Updated: 2024/12/02 12:45:58 by ahaddadi         ###   ########.fr       */
+/*   Updated: 2024/12/02 16:46:27 by ahaddadi         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 
 // 								Printf specific functions
 int					ft_printf(const char *str, ...);
-char				*fsp(char fs, va_list args);
+char				*fsp(char fs, va_list args, int *i);
 char				*format_c(int c);
 char				*format_s(char *x);
 char				*format_p(void *add);

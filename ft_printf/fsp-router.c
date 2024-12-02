@@ -1,12 +1,17 @@
 #include "ft_printf.h"
 #include <stdlib.h>
 
-char	*fsp(char fs, va_list args)
+char	*fsp(char fs, va_list args, int *i)
 {
 	if (fs == '%')
 		return(ft_strdup("%"));
 	else if (fs == 'c')
-		return format_c(va_arg(args, int));
+	{
+		int c = va_arg(args, int);
+		if (c == 0)
+			*i += 1;
+		return format_c(c);
+	}
 	else if (fs == 's')
 		return format_s(va_arg(args, char *));
 	else if (fs == 'p')
